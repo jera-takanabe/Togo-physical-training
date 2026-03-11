@@ -1,2 +1,2 @@
-test_date,athlete,test_type,trial_no,best_or_avg,split_5m_s,split_10m_s,split_20m_s,split_30m_s,total_30m_s,body_weight_kg,height_cm,sleep_hours,fatigue_score_1_5,pain_flag,surface,shoes,video_fps,camera_position,start_definition,finish_definition,source_app,source_file,notes
-2026-03-01,togo,SPRINT_30M,1,best,0,0,0,0,0,0,0,0,0,false,,,,,Kinovea,,,
+session_id,date,athlete,test_type,trial,device,video_file,fps,start_rule,finish_rule,split_5m_s,split_10m_s,split_20m_s,split_30m_s,total_time_s,camera_position,surface,shoes,wind,memo
+2026-03-08_test1,2026-03-08,togo,sprint_30m,1,Kinovea,30m_001.mov,240,rear_foot_off,chest_line,,1.96,3.38,4.86,4.86,side_15m,track,spike,0,clean

@@ -1,2 +1,2 @@
-test_date,athlete,test_type,trial_no,best_or_avg,jump_height_cm,flight_time_ms,contact_time_ms,rsi,box_height_cm,body_weight_kg,height_cm,sleep_hours,fatigue_score_1_5,pain_flag,surface,shoes,video_fps,source_app,source_file,notes
-2026-03-01,togo,CMJ,1,best,0,0,, , ,0,0,0,0,false,,,,My Jump Lab,,
+session_id,date,athlete,test_type,trial,device,video_file,fps,jump_height_cm,contact_time_ms,flight_time_ms,rsi,surface,shoes,sleep_hours,fatigue,pain,memo
+2026-03-08_test1,2026-03-08,togo,CMJ,1,MyJumpLab,CMJ_001.mov,240,31.2,,504,,track,spike,8.0,2,0,good
