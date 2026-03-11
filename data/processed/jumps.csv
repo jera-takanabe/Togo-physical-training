@@ -1,0 +1,2 @@
+test_date,athlete,test_type,trial_no,best_or_avg,jump_height_cm,flight_time_ms,contact_time_ms,rsi,box_height_cm,body_weight_kg,height_cm,sleep_hours,fatigue_score_1_5,pain_flag,surface,shoes,video_fps,source_app,source_file,notes
+2026-03-01,togo,CMJ,1,best,0,0,, , ,0,0,0,0,false,,,,My Jump Lab,,
