@@ -39,7 +39,6 @@ Togo Physical Training Repository
 同日に複数種目を測定しても、同じ測定イベントであれば同じ `session_id` を付与する。
 
 例:
-
 - `2026-03-08_test1`
 - `2026-04-12_test1`
 
@@ -63,19 +62,13 @@ Togo Physical Training Repository
 
 # 2. Raw Data Files
 
-## 2.1 Sprint Tests
+## 2.0 Measurement Sessions
 
 対象ファイル:
+- `data/raw/measurement_sessions.csv`
 
-- `data/raw/sprint_tests_raw.csv`
-
-スプリント系および方向転換系の測定データ。
-
-対象種目:
-- 30m走
-- Fly5
-- Fly10
-- 5-10-5
+測定セッション共通情報を保持する台帳。  
+同じ session_id に属する sprint / cod / jump / horizontal / throw の raw データは、このセッション情報を参照する。
 
 ### Columns
 
@@ -84,9 +77,41 @@ Togo Physical Training Repository
 | session_id | セッションID | 同一測定イベント識別子 |
 | date | 測定日 | `YYYY-MM-DD` |
 | athlete | 選手ID | 例: `togo` |
-| test_type | テスト種別 | `sprint_30m`, `fly_5m`, `fly_10m`, `5_10_5` |
+| location | 測定場所 | 例: `academy_field`, `school_ground` |
+| surface | 路面 | 例: `track`, `grass`, `gym` |
+| shoes | シューズ | 例: `spike`, `trainer` |
+| sleep_hours | 睡眠時間 | 前日の睡眠時間 |
+| fatigue | 疲労度 | 主観疲労。1〜5 |
+| pain | 痛み | 痛みの程度。0〜5 |
+| body_weight_kg | 体重 | 単位は kg |
+| height_cm | 身長 | 単位は cm |
+| practice_load | 練習負荷 | 主観または簡易負荷指標 |
+| weather | 天候 | 例: `sunny`, `cloudy`, `rainy` |
+| temperature_c | 気温 | 単位は ℃ |
+| wind | 風 | 風速または風のメモ |
+| notes | 備考 | 任意メモ |
+
+## 2.1 Sprint Tests
+
+対象ファイル:
+- `data/raw/sprint_tests_raw.csv`
+
+直線スプリント系の測定データ。
+
+対象種目:
+- 30m走
+- Fly5
+- Fly10
+
+### Columns
+
+| column | 日本語 | 説明 |
+|---|---|---|
+| session_id | セッションID | 同一測定イベント識別子 |
+| date | 測定日 | `YYYY-MM-DD` |
+| athlete | 選手ID | 例: `togo` |
+| test_type | テスト種別 | `sprint_30m`, `fly_5m`, `fly_10m` |
 | trial | 試技番号 | 1, 2, 3 ... |
-| side | 左右 | 左右区別がある種目で使用。`left` / `right`。不要な種目は空欄 |
 | device | 測定ツール | 例: `Kinovea` |
 | video_file | 動画ファイル | 元動画ファイル名 |
 | fps | フレームレート | 動画FPS。例: `240` |
@@ -115,7 +140,52 @@ Togo Physical Training Repository
 | sprint_30m | 30m走 | 10m, 20m, 30mの通過タイムと全体タイムを記録する |
 | fly_5m | Fly5 | 助走付き5m区間タイム |
 | fly_10m | Fly10 | 助走付き10m区間タイム |
-| 5_10_5 | 5-10-5 | 方向転換能力をみるCODテスト |
+
+---
+
+## 2.2 COD Tests
+
+対象ファイル:
+- `data/raw/cod_tests_raw.csv`
+
+方向転換（COD）系の測定データ。
+
+対象種目:
+- Pro Agility（= 5-10-5）
+
+### Columns
+
+| column | 日本語 | 説明 |
+|---|---|---|
+| session_id | セッションID | 同一測定イベント識別子 |
+| date | 測定日 | `YYYY-MM-DD` |
+| athlete | 選手ID | 例: `togo` |
+| test_type | テスト種別 | `pro_agility` など |
+| trial | 試技番号 | 1, 2, 3 ... |
+| side | 左右 | `left` / `right`。左右区別なしは空欄 |
+| device | 測定ツール | 例: `Kinovea` |
+| video_file | 動画ファイル | 元動画ファイル名 |
+| fps | フレームレート | 動画FPS |
+| start_rule | スタート判定 | どの瞬間をスタートとしたか |
+| finish_rule | ゴール判定 | どの瞬間をゴールとしたか |
+| segment_1_s | 区間1タイム | 必要に応じて記録。単位は秒 |
+| segment_2_s | 区間2タイム | 必要に応じて記録。単位は秒 |
+| segment_3_s | 区間3タイム | 必要に応じて記録。単位は秒 |
+| total_time_s | 総タイム | テスト全体のタイム。単位は秒 |
+| camera_position | カメラ位置 | 例: `side_15m` |
+| surface | 路面 | 例: `track`, `grass`, `gym` |
+| shoes | シューズ | 使用シューズ |
+| wind | 風 | 風速または風のメモ |
+| sleep_hours | 睡眠時間 | 前日の睡眠時間 |
+| fatigue | 疲労度 | 主観疲労。1〜5 |
+| pain | 痛み | 痛みの程度。0〜5 |
+| memo | メモ | 任意メモ |
+
+### COD Test Type
+
+| test_type | 日本語名 | 説明 |
+|---|---|---|
+| pro_agility | Pro Agility | 5-10-5 shuttle と同義で扱うCODテスト |
 
 ### side
 
@@ -127,10 +197,9 @@ Togo Physical Training Repository
 
 ---
 
-## 2.2 Jump Tests
+## 2.3 Jump Tests
 
 対象ファイル:
-
 - `data/raw/jump_tests_raw.csv`
 
 垂直方向ジャンプ系の測定データ。
@@ -173,10 +242,9 @@ Togo Physical Training Repository
 
 ---
 
-## 2.3 Horizontal Tests
+## 2.4 Horizontal Tests
 
 対象ファイル:
-
 - `data/raw/horizontal_tests_raw.csv`
 
 水平方向の跳躍系・バウンディング系の測定データ。
@@ -225,10 +293,9 @@ Togo Physical Training Repository
 
 ---
 
-## 2.4 Throw Tests
+## 2.5 Throw Tests
 
 対象ファイル:
-
 - `data/raw/throw_tests_raw.csv`
 
 投てき系の測定データ。
@@ -263,10 +330,9 @@ Togo Physical Training Repository
 
 ---
 
-## 2.5 Readiness / Growth
+## 2.6 Readiness / Growth
 
 対象ファイル:
-
 - `data/raw/readiness/daily_readiness.csv`
 
 コンディション・成長管理用データ。  
@@ -300,8 +366,6 @@ Togo Physical Training Repository
 | 4 | 疲労あり |
 | 5 | 非常に疲労 |
 
----
-
 ## 3.2 Pain Scale
 
 | 値 | 定義 |
@@ -323,19 +387,19 @@ Togo Physical Training Repository
 - processed データは raw から自動生成する
 - session 単位では best / avg / std を保持する
 - ジャンプ系は My Jump Lab を使用する
-- スプリント系は Kinovea を使用する
-- 距離系テストは測定値をそのまま raw に保存する
+- スプリント系とCOD系は Kinovea を使用する
+- 距離系テストは測定値を raw に保存する
 - コンディション系データは readiness / growth として別管理する
 
 ---
 
 # 5. Current Test Menu
 
-現時点で運用対象としている測定種目は次の通り。
-
-## Sprint / COD
+## Sprint
 - 30m走（10m, 20m, 30m, Fly5, Fly10）
-- 5-10-5
+
+## COD
+- Pro Agility（= 5-10-5）
 
 ## Jump
 - CMJ
@@ -362,9 +426,12 @@ Togo Physical Training Repository
 
 # 6. Future Extension Policy
 
-今後、測定項目が増えることを前提とする。  
-たとえば次のような指標を追加可能とする。
+今後、測定項目が増えることを前提とする。
 
+追加候補:
+- 505
+- T-test
+- L-drill
 - インターバル / 回復系テスト
 - 反復スプリント
 - 持久系
