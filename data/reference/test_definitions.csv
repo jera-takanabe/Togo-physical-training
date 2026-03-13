@@ -1,0 +1,12 @@
+test_type,category,metric_type,unit,better_direction,primary_metric,description
+sprint_30m,sprint,time,s,lower,total_time_s,30m sprint acceleration test
+fly_5m,sprint,time,s,lower,fly_5m_s,flying 5m sprint speed test
+fly_10m,sprint,time,s,lower,fly_10m_s,flying 10m sprint speed test
+pro_agility,cod,time,s,lower,total_time_s,5-10-5 shuttle change of direction test
+CMJ,jump,height,cm,higher,jump_height_cm,countermovement jump
+SJ,jump,height,cm,higher,jump_height_cm,squat jump
+DJ,jump,rsi,ratio,higher,rsi,drop jump reactive strength index
+standing_long_jump,horizontal,distance,cm,higher,distance_cm,standing long jump
+bounding_10,horizontal,distance,cm,higher,distance_cm,10 bounding test
+hop_5,horizontal,distance,cm,higher,distance_cm,5 hop unilateral test
+rugby_ball_throw,throw,distance,m,higher,distance_m,rugby ball throw power test
