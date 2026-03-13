@@ -1,0 +1,2 @@
+session_id,date,athlete,test_type,trials,best_5m_s,avg_5m_s,best_10m_s,avg_10m_s,best_20m_s,avg_20m_s,best_30m_s,avg_30m_s,best_total_time_s,avg_total_time_s,quality_flag,memo
+2026-03-08_test1,2026-03-08,togo,sprint_30m,1,,,1.96,1.96,3.38,3.38,4.86,4.86,4.86,4.86,ok,

@@ -1,0 +1,7 @@
+athlete,test_type,metric_name,best_value,unit,date,session_id
+togo,CMJ,best_flight_time_ms,504.0,ms,2026-03-08,2026-03-08_test1
+togo,CMJ,best_jump_height_cm,31.2,cm,2026-03-08,2026-03-08_test1
+togo,sprint_30m,best_10m_s,1.96,s,2026-03-08,2026-03-08_test1
+togo,sprint_30m,best_20m_s,3.38,s,2026-03-08,2026-03-08_test1
+togo,sprint_30m,best_30m_s,4.86,s,2026-03-08,2026-03-08_test1
+togo,sprint_30m,best_total_time_s,4.86,s,2026-03-08,2026-03-08_test1
