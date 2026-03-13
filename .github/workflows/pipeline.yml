@@ -3,8 +3,6 @@ name: training-pipeline
 on:
   push:
     paths:
-      - "data/**"
-      - "scripts/**"
 
 permissions:
   contents: write
