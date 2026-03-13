@@ -6,6 +6,9 @@ on:
       - "data/**"
       - "scripts/**"
 
+permissions:
+  contents: write
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
