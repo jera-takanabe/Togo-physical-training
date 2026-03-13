@@ -1,0 +1,4 @@
+session_id,date,athlete,test_type,trials,best_jump_height_cm,avg_jump_height_cm,std_jump_height_cm,best_contact_time_ms,avg_contact_time_ms,std_contact_time_ms,best_flight_time_ms,avg_flight_time_ms,std_flight_time_ms,best_rsi,avg_rsi,std_rsi,quality_flag,memo
+2026-03-08_test1,2026-03-08,togo,CMJ,2,32.7,30.450000000000003,2.2500000000000018,,,,,,,,,,ok,
+2026-03-08_test1,2026-03-08,togo,DJ,3,14.0,12.866666666666667,1.1440668201153674,192.0,194.66666666666666,1.8856180831641267,338.0,323.6666666666667,14.383632673594278,1.72,1.6633333333333333,0.05436502143433358,ok,
+2026-03-08_test1,2026-03-08,togo,SJ,3,23.0,21.3,1.3880441875771337,,,,,,,,,,ok,

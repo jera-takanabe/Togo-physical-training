@@ -3,12 +3,17 @@ import pandas as pd
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROCESSED_DIR = BASE_DIR / "data" / "processed"
+DOCS_DIR = BASE_DIR / "docs" / "dashboards"
 
-JUMPS_SESSION = BASE_DIR / "data" / "processed" / "jumps_session.csv"
-SPRINTS_SESSION = BASE_DIR / "data" / "processed" / "sprints_session.csv"
-PERSONAL_BESTS = BASE_DIR / "data" / "processed" / "personal_bests.csv"
+SPRINT_SESSION = PROCESSED_DIR / "sprint_sessions.csv"
+COD_SESSION = PROCESSED_DIR / "cod_sessions.csv"
+JUMP_SESSION = PROCESSED_DIR / "jump_sessions.csv"
+HORIZONTAL_SESSION = PROCESSED_DIR / "horizontal_sessions.csv"
+THROW_SESSION = PROCESSED_DIR / "throw_sessions.csv"
+PERSONAL_BESTS = PROCESSED_DIR / "personal_bests.csv"
 
-LATEST_SUMMARY = BASE_DIR / "docs" / "dashboards" / "latest_summary.md"
+LATEST_SUMMARY = DOCS_DIR / "latest_summary.md"
 
 
 def load_csv(path: Path) -> pd.DataFrame:
@@ -35,66 +40,154 @@ def format_value(value, digits=2):
     return str(value)
 
 
+def add_table(lines: list[str], title: str, df: pd.DataFrame, columns: list[str]):
+    if df.empty:
+        return
+
+    lines.append(f"## {title}")
+    lines.append("")
+    lines.append("| " + " | ".join(columns) + " |")
+    lines.append("|" + "|".join(["---"] * len(columns)) + "|")
+
+    for _, row in df.iterrows():
+        values = [format_value(row.get(col)) for col in columns]
+        lines.append("| " + " | ".join(values) + " |")
+
+    lines.append("")
+
+
 def build_summary():
-    jumps_df = load_csv(JUMPS_SESSION)
-    sprints_df = load_csv(SPRINTS_SESSION)
+    sprint_df = load_csv(SPRINT_SESSION)
+    cod_df = load_csv(COD_SESSION)
+    jump_df = load_csv(JUMP_SESSION)
+    horizontal_df = load_csv(HORIZONTAL_SESSION)
+    throw_df = load_csv(THROW_SESSION)
     pbs_df = load_csv(PERSONAL_BESTS)
 
-    latest_date = latest_date_from_frames(jumps_df, sprints_df)
+    latest_date = latest_date_from_frames(
+        sprint_df, cod_df, jump_df, horizontal_df, throw_df
+    )
+
     if latest_date is None:
         content = "# Latest Summary\n\nデータがありません。\n"
     else:
-        latest_jumps = jumps_df[jumps_df["date"] == latest_date].copy() if not jumps_df.empty else pd.DataFrame()
-        latest_sprints = sprints_df[sprints_df["date"] == latest_date].copy() if not sprints_df.empty else pd.DataFrame()
-
         lines = []
         lines.append("# Latest Summary")
         lines.append("")
         lines.append(f"- Latest Test Date: **{latest_date}**")
         lines.append("")
 
-        if not latest_jumps.empty:
-            lines.append("## Jump Sessions")
-            lines.append("")
-            lines.append("| test_type | trials | best_jump_height_cm | avg_jump_height_cm | best_rsi | quality_flag |")
-            lines.append("|---|---:|---:|---:|---:|---|")
-            for _, row in latest_jumps.sort_values(["athlete", "test_type"]).iterrows():
-                lines.append(
-                    f"| {row['test_type']} | {format_value(row['trials'], 0)} | "
-                    f"{format_value(row.get('best_jump_height_cm'))} | "
-                    f"{format_value(row.get('avg_jump_height_cm'))} | "
-                    f"{format_value(row.get('best_rsi'))} | "
-                    f"{format_value(row.get('quality_flag'), 0)} |"
-                )
-            lines.append("")
+        latest_sprint = sprint_df[sprint_df["date"] == latest_date].copy() if not sprint_df.empty else pd.DataFrame()
+        latest_cod = cod_df[cod_df["date"] == latest_date].copy() if not cod_df.empty else pd.DataFrame()
+        latest_jump = jump_df[jump_df["date"] == latest_date].copy() if not jump_df.empty else pd.DataFrame()
+        latest_horizontal = horizontal_df[horizontal_df["date"] == latest_date].copy() if not horizontal_df.empty else pd.DataFrame()
+        latest_throw = throw_df[throw_df["date"] == latest_date].copy() if not throw_df.empty else pd.DataFrame()
 
-        if not latest_sprints.empty:
-            lines.append("## Sprint Sessions")
-            lines.append("")
-            lines.append("| test_type | trials | best_10m_s | best_20m_s | best_30m_s | best_total_time_s | quality_flag |")
-            lines.append("|---|---:|---:|---:|---:|---:|---|")
-            for _, row in latest_sprints.sort_values(["athlete", "test_type"]).iterrows():
-                lines.append(
-                    f"| {row['test_type']} | {format_value(row['trials'], 0)} | "
-                    f"{format_value(row.get('best_10m_s'))} | "
-                    f"{format_value(row.get('best_20m_s'))} | "
-                    f"{format_value(row.get('best_30m_s'))} | "
-                    f"{format_value(row.get('best_total_time_s'))} | "
-                    f"{format_value(row.get('quality_flag'), 0)} |"
-                )
-            lines.append("")
+        if not latest_sprint.empty:
+            latest_sprint = latest_sprint.sort_values(["athlete", "test_type"])
+            add_table(
+                lines,
+                "Sprint Sessions",
+                latest_sprint,
+                [
+                    "test_type",
+                    "trials",
+                    "best_split_5m_s",
+                    "best_split_10m_s",
+                    "best_split_20m_s",
+                    "best_split_30m_s",
+                    "best_fly_5m_s",
+                    "best_fly_10m_s",
+                    "best_total_time_s",
+                    "quality_flag",
+                ],
+            )
+
+        if not latest_cod.empty:
+            latest_cod = latest_cod.sort_values(["athlete", "test_type", "side"])
+            add_table(
+                lines,
+                "COD Sessions",
+                latest_cod,
+                [
+                    "test_type",
+                    "side",
+                    "trials",
+                    "best_segment_1_s",
+                    "best_segment_2_s",
+                    "best_segment_3_s",
+                    "best_total_time_s",
+                    "quality_flag",
+                ],
+            )
+
+        if not latest_jump.empty:
+            latest_jump = latest_jump.sort_values(["athlete", "test_type"])
+            add_table(
+                lines,
+                "Jump Sessions",
+                latest_jump,
+                [
+                    "test_type",
+                    "trials",
+                    "best_jump_height_cm",
+                    "avg_jump_height_cm",
+                    "std_jump_height_cm",
+                    "best_contact_time_ms",
+                    "best_flight_time_ms",
+                    "best_rsi",
+                    "quality_flag",
+                ],
+            )
+
+        if not latest_horizontal.empty:
+            latest_horizontal = latest_horizontal.sort_values(["athlete", "test_type", "side"])
+            add_table(
+                lines,
+                "Horizontal Sessions",
+                latest_horizontal,
+                [
+                    "test_type",
+                    "side",
+                    "trials",
+                    "best_distance_cm",
+                    "avg_distance_cm",
+                    "std_distance_cm",
+                    "quality_flag",
+                ],
+            )
+
+        if not latest_throw.empty:
+            latest_throw = latest_throw.sort_values(["athlete", "test_type"])
+            add_table(
+                lines,
+                "Throw Sessions",
+                latest_throw,
+                [
+                    "test_type",
+                    "trials",
+                    "best_distance_m",
+                    "avg_distance_m",
+                    "std_distance_m",
+                    "quality_flag",
+                ],
+            )
 
         if not pbs_df.empty:
-            lines.append("## Current Personal Bests")
-            lines.append("")
-            lines.append("| test_type | metric_name | best_value | unit | date |")
-            lines.append("|---|---|---:|---|---|")
-            for _, row in pbs_df.sort_values(["test_type", "metric_name"]).iterrows():
-                lines.append(
-                    f"| {row['test_type']} | {row['metric_name']} | "
-                    f"{format_value(row['best_value'])} | {row['unit']} | {row['date']} |"
-                )
-            lines.append("")
+            pbs_df = pbs_df.sort_values(["test_type", "metric_name", "side"], na_position="last")
+            add_table(
+                lines,
+                "Current Personal Bests",
+                pbs_df,
+                [
+                    "test_type",
+                    "side",
+                    "metric_name",
+                    "best_value",
+                    "unit",
+                    "date",
+                ],
+            )
 
         content = "\n".join(lines) + "\n"
 

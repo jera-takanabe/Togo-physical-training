@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PYTHON_EXE = sys.executable
 
 SCRIPTS = [
+    BASE_DIR / "scripts" / "validate_data.py",
     BASE_DIR / "scripts" / "build_sessions.py",
     BASE_DIR / "scripts" / "update_personal_bests.py",
     BASE_DIR / "scripts" / "build_latest_summary.py",

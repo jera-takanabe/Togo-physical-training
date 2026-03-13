@@ -1,1 +1,3 @@
-session_id,date,athlete,test_type,trial,side,device,video_file,fps,start_rule,finish_rule,split_5m_s,split_10m_s,split_20m_s,split_30m_s,fly_5m_s,fly_10m_s,total_time_s,camera_position,surface,shoes,wind,sleep_hours,fatigue,pain,memo
+session_id,date,athlete,test_type,trial,valid,device,video_file,fps,start_rule,finish_rule,split_5m_s,split_10m_s,split_20m_s,split_30m_s,fly_5m_s,fly_10m_s,total_time_s,camera_position,surface,shoes,wind,sleep_hours,fatigue,pain,memo
+2026-03-08_test1,2026-03-08,togo,sprint_30m,1,true,Kinovea,30sprin_001.MOV,240,後足の離地,胸,,1.62,3.45,5.39,0.93,1.94,5.39,side_15m,アスファルト,スニーカー,0,9.0,2,0,
+2026-03-08_test1,2026-03-08,togo,sprint_30m,2,true,Kinovea,30sprin_002.MOV,240,後足の離地,胸,,2.05,3.82,5.63,0.91,1.80,5.63,side_15m,アスファルト,スニーカー,0,9.0,2,0,

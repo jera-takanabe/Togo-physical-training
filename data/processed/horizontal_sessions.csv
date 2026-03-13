@@ -1,0 +1,5 @@
+session_id,date,athlete,test_type,side,trials,best_distance_cm,avg_distance_cm,std_distance_cm,quality_flag,memo
+2026-03-08_test1,2026-03-08,togo,bounding_10,,2,1595,1558.5,36.5,ok,
+2026-03-08_test1,2026-03-08,togo,hop_5,left,2,702,645.5,56.5,ok,
+2026-03-08_test1,2026-03-08,togo,hop_5,right,2,695,653.0,42.0,ok,
+2026-03-08_test1,2026-03-08,togo,standing_long_jump,,3,172,168.0,4.320493798938574,ok,

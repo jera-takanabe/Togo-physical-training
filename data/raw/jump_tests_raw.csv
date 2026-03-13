@@ -1,1 +1,12 @@
-session_id,date,athlete,test_type,trial,device,video_file,fps,jump_height_cm,contact_time_ms,flight_time_ms,rsi,surface,shoes,sleep_hours,fatigue,pain,memo
+session_id,date,athlete,test_type,trial,valid,device,video_file,fps,jump_height_cm,contact_time_ms,flight_time_ms,rsi,surface,shoes,sleep_hours,fatigue,pain,memo
+2026-03-08_test1,2026-03-08,togo,CMJ,1,false,MyJumpLab,CMJ_001.MOV,240,19.2,,,,アスファルト,スニーカー,9.0,2,0,failed
+2026-03-08_test1,2026-03-08,togo,CMJ,2,true,MyJumpLab,CMJ_002.MOV,240,28.2,,,,アスファルト,スニーカー,9.0,2,0,usable
+2026-03-08_test1,2026-03-08,togo,CMJ,3,true,MyJumpLab,CMJ_003.MOV,240,32.7,,,,アスファルト,スニーカー,9.0,2,0,usable
+
+2026-03-08_test1,2026-03-08,togo,SJ,1,true,MyJumpLab,SJ_001.MOV,240,23.0,,,,アスファルト,スニーカー,9.0,2,0,
+2026-03-08_test1,2026-03-08,togo,SJ,2,true,MyJumpLab,SJ_002.MOV,240,19.6,,,,アスファルト,スニーカー,9.0,2,0,
+2026-03-08_test1,2026-03-08,togo,SJ,3,true,MyJumpLab,SJ_003.MOV,240,21.3,,,,アスファルト,スニーカー,9.0,2,0,
+
+2026-03-08_test1,2026-03-08,togo,DJ,1,true,MyJumpLab,DJ_001.MOV,240,11.3,192,304,1.59,アスファルト,スニーカー,9.0,2,0,
+2026-03-08_test1,2026-03-08,togo,DJ,2,true,MyJumpLab,DJ_002.MOV,240,14.0,196,338,1.72,アスファルト,スニーカー,9.0,2,0,
+2026-03-08_test1,2026-03-08,togo,DJ,3,true,MyJumpLab,DJ_003.MOV,240,13.3,196,329,1.68,アスファルト,スニーカー,9.0,2,0,

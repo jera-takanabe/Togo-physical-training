@@ -1,0 +1,3 @@
+session_id,date,athlete,test_type,trial,side,valid,device,video_file,fps,start_rule,finish_rule,segment_1_s,segment_2_s,segment_3_s,total_time_s,camera_position,surface,shoes,wind,sleep_hours,fatigue,pain,memo
+2026-03-08_test1,2026-03-08,togo,pro_agility,1,right,true,Kinovea,pr-right_001.MOV,240,体重移動開始,胸,,,,6.31,side_15m,アスファルト,スニーカー,0,9.0,2,0,
+2026-03-08_test1,2026-03-08,togo,pro_agility,1,left,true,Kinovea,pr-left_001.MOV,240,体重移動開始,胸,,,,6.37,side_15m,アスファルト,スニーカー,0,9.0,2,0,
