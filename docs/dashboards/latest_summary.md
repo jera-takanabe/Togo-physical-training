@@ -2,6 +2,34 @@
 
 - Latest Test Date: **2026-03-08**
 
+## Rugby Physical Score
+
+- Score: **77.57**
+- Band: **Advanced**
+- Strongest Domain: **acceleration**
+- Weakest Domain: **explosive_power**
+- Priority 1: **explosive_power**
+- Priority 2: **cod**
+
+## Domain Scores
+
+| athlete | session_date | acceleration_score | cod_score | reactive_strength_score | explosive_power_score | upper_body_power_score |
+|---|---|---|---|---|---|---|
+| togo | 2026-03-08 | 100.00 | 64.50 | 74.50 | 58.59 | - |
+
+
+## Test Scores
+
+| athlete | session_date | test | raw_value | unit | score | score_band | domain | gap_to_next_level |
+|---|---|---|---|---|---|---|---|---|
+| togo | 2026-03-08 | 10m_sprint | 1.62 | s | 100.00 | Elite | acceleration | 0.00 |
+| togo | 2026-03-08 | 20m_sprint | 3.45 | s | 100.00 | Elite | acceleration | 0.00 |
+| togo | 2026-03-08 | pro_agility_5_10_5 | 6.31 | s | 64.50 | Developing | cod | 1.01 |
+| togo | 2026-03-08 | cmj | 32.70 | cm | 63.43 | Developing | explosive_power | 2.30 |
+| togo | 2026-03-08 | rsi | 1.72 | ratio | 74.50 | Advanced | reactive_strength | 0.28 |
+| togo | 2026-03-08 | standing_long_jump | 1.72 | m | 51.33 | Foundation | explosive_power | 0.28 |
+
+
 ## Sprint Sessions
 
 | test_type | trials | best_split_5m_s | best_split_10m_s | best_split_20m_s | best_split_30m_s | best_fly_5m_s | best_fly_10m_s | best_total_time_s | quality_flag |
@@ -38,27 +66,26 @@
 |---|---|---|---|---|---|
 | rugby_ball_throw | 3 | 7.37 | 6.91 | 0.33 | ok |
 
-## Current Personal Bests
+## Personal Bests
 
-| test_type | side | metric_name | best_value | unit | date |
-|---|---|---|---|---|---|
-| CMJ | - | best_jump_height_cm | 32.70 | cm | 2026-03-08 |
-| DJ | - | best_contact_time_ms | 192.00 | ms | 2026-03-08 |
-| DJ | - | best_flight_time_ms | 338.00 | ms | 2026-03-08 |
-| DJ | - | best_jump_height_cm | 14.00 | cm | 2026-03-08 |
-| DJ | - | best_rsi | 1.72 | - | 2026-03-08 |
-| SJ | - | best_jump_height_cm | 23.00 | cm | 2026-03-08 |
-| bounding_10 | - | best_distance_cm | 1595.00 | cm | 2026-03-08 |
-| hop_5 | left | best_distance_cm | 702.00 | cm | 2026-03-08 |
-| hop_5 | right | best_distance_cm | 695.00 | cm | 2026-03-08 |
-| pro_agility | left | best_total_time_s | 6.37 | s | 2026-03-08 |
-| pro_agility | right | best_total_time_s | 6.31 | s | 2026-03-08 |
-| rugby_ball_throw | - | best_distance_m | 7.37 | m | 2026-03-08 |
-| sprint_30m | - | best_fly_10m_s | 1.80 | s | 2026-03-08 |
-| sprint_30m | - | best_fly_5m_s | 0.91 | s | 2026-03-08 |
-| sprint_30m | - | best_split_10m_s | 1.62 | s | 2026-03-08 |
-| sprint_30m | - | best_split_20m_s | 3.45 | s | 2026-03-08 |
-| sprint_30m | - | best_split_30m_s | 5.39 | s | 2026-03-08 |
-| sprint_30m | - | best_total_time_s | 5.39 | s | 2026-03-08 |
-| standing_long_jump | - | best_distance_cm | 172.00 | cm | 2026-03-08 |
-
+| athlete | test_type | metric_name | best_value | unit | date | session_id | side |
+|---|---|---|---|---|---|---|---|
+| togo | CMJ | best_jump_height_cm | 32.70 | cm | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | DJ | best_contact_time_ms | 192.00 | ms | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | DJ | best_flight_time_ms | 338.00 | ms | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | DJ | best_jump_height_cm | 14.00 | cm | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | DJ | best_rsi | 1.72 | - | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | SJ | best_jump_height_cm | 23.00 | cm | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | bounding_10 | best_distance_cm | 1595.00 | cm | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | hop_5 | best_distance_cm | 702.00 | cm | 2026-03-08 | 2026-03-08_test1 | left |
+| togo | hop_5 | best_distance_cm | 695.00 | cm | 2026-03-08 | 2026-03-08_test1 | right |
+| togo | pro_agility | best_total_time_s | 6.37 | s | 2026-03-08 | 2026-03-08_test1 | left |
+| togo | pro_agility | best_total_time_s | 6.31 | s | 2026-03-08 | 2026-03-08_test1 | right |
+| togo | rugby_ball_throw | best_distance_m | 7.37 | m | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | sprint_30m | best_fly_10m_s | 1.80 | s | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | sprint_30m | best_fly_5m_s | 0.91 | s | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | sprint_30m | best_split_10m_s | 1.62 | s | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | sprint_30m | best_split_20m_s | 3.45 | s | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | sprint_30m | best_split_30m_s | 5.39 | s | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | sprint_30m | best_total_time_s | 5.39 | s | 2026-03-08 | 2026-03-08_test1 | - |
+| togo | standing_long_jump | best_distance_cm | 172.00 | cm | 2026-03-08 | 2026-03-08_test1 | - |

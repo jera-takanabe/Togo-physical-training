@@ -10,6 +10,7 @@ SCRIPTS = [
     BASE_DIR / "scripts" / "validate_data.py",
     BASE_DIR / "scripts" / "build_sessions.py",
     BASE_DIR / "scripts" / "update_personal_bests.py",
+    BASE_DIR / "scripts" / "calc_rugby_physical_score.py",
     BASE_DIR / "scripts" / "build_latest_summary.py",
 ]
 
