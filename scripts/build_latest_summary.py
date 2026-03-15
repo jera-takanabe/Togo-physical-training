@@ -9,6 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROCESSED_DIR = BASE_DIR / "data" / "processed"
 ANALYSIS_DIR = BASE_DIR / "data" / "analysis"
 OUTPUT_PATH = BASE_DIR / "docs" / "dashboards" / "latest_summary.md"
+TARGET_GAP_PATH = BASE_DIR / "docs" / "dashboards" / "target_gap_summary.md"
 
 
 def read_csv(path: Path) -> pd.DataFrame:
@@ -77,6 +78,15 @@ def to_md_table(df: pd.DataFrame, labels: dict[str, str]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def read_target_gap_summary() -> str:
+    if not TARGET_GAP_PATH.exists():
+        return ""
+    text = TARGET_GAP_PATH.read_text(encoding="utf-8").strip()
+    if not text:
+        return ""
+    return text + "\n\n"
+
+
 def build_summary() -> str:
     labels = load_labels()
 
@@ -114,10 +124,17 @@ def build_summary() -> str:
     lines.append("")
     lines.append("![Radar Chart](radar_chart.png)")
     lines.append("")
+    lines.append("![Target Radar v2](target_radar_v2.png)")
+    lines.append("")
     lines.append("![Rugby Physical Score Trend](rugby_physical_score_trend.png)")
     lines.append("")
     lines.append("![Domain Scores Trend](domain_scores_trend.png)")
     lines.append("")
+
+    gap_text = read_target_gap_summary()
+    if gap_text:
+        lines.append(gap_text.rstrip())
+        lines.append("")
 
     if not rugby_score.empty:
         row = rugby_score.iloc[0]
