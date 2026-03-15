@@ -8,17 +8,9 @@ Purpose:
 - Build domain scores
 - Build rugby physical score summary
 
-Expected input:
-- data/processed/sprint_sessions.csv
-- data/processed/cod_sessions.csv
-- data/processed/jump_sessions.csv
-- data/processed/horizontal_sessions.csv
-- data/reference/benchmark_values.csv
-
 Notes:
-- Upper body power (medicine_ball_throw_2kg) is defined in benchmarks,
-  but is not yet extracted until actual 2kg medicine ball test data exists.
 - rugby_ball_throw is intentionally excluded from score calculation.
+- medicine_ball_throw_2kg is included when present in processed throw sessions.
 """
 
 from __future__ import annotations
@@ -246,8 +238,18 @@ def extract_test_results_from_processed() -> pd.DataFrame:
                     "unit": "m",
                 })
 
-    # rugby_ball_throw is intentionally excluded until actual
-    # medicine_ball_throw_2kg data exists.
+    throw = _safe_read_csv(PROCESSED / "throw_sessions.csv")
+    if not throw.empty:
+        throw = throw[throw["test_type"].astype(str).str.lower() == "medicine_ball_throw_2kg"].copy()
+        for _, r in throw.iterrows():
+            if pd.notna(r.get("best_distance_m")):
+                rows.append({
+                    "athlete": r["athlete"],
+                    "session_date": r["date"],
+                    "test": "medicine_ball_throw_2kg",
+                    "raw_value": float(r["best_distance_m"]),
+                    "unit": "m",
+                })
 
     return pd.DataFrame(rows)
 

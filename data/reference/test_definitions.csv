@@ -10,3 +10,4 @@ standing_long_jump,horizontal,distance,cm,higher,distance_cm,standing long jump
 bounding_10,horizontal,distance,cm,higher,distance_cm,10 bounding test
 hop_5,horizontal,distance,cm,higher,distance_cm,5 hop unilateral test
 rugby_ball_throw,throw,distance,m,higher,distance_m,rugby ball throw power test
+medicine_ball_throw_2kg,throw,distance,m,higher,distance_m,2kg medicine ball throw power test

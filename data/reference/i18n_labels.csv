@@ -1,0 +1,51 @@
+key,en,ja
+latest_summary,Latest Summary,最新サマリー
+latest_test_date,Latest Test Date,最新測定日
+rugby_physical_score,Rugby Physical Score,ラグビー総合フィジカルスコア
+score,Score,スコア
+band,Band,評価帯
+strongest_domain,Strongest Domain,最強ドメイン
+weakest_domain,Weakest Domain,最弱ドメイン
+priority_1,Priority 1,優先課題1
+priority_2,Priority 2,優先課題2
+domain_scores,Domain Scores,能力ドメインスコア
+test_scores,Test Scores,テストスコア
+sprint_sessions,Sprint Sessions,スプリントセッション
+cod_sessions,COD Sessions,方向転換セッション
+jump_sessions,Jump Sessions,ジャンプセッション
+horizontal_sessions,Horizontal Sessions,水平ジャンプセッション
+throw_sessions,Throw Sessions,投てきセッション
+personal_bests,Personal Bests,パーソナルベスト
+no_data,_No data_,_データなし_
+athlete,Athlete,選手
+session_date,Session Date,測定日
+date,Date,日付
+test,Test,テスト
+raw_value,Raw Value,実測値
+unit,Unit,単位
+score_band,Score Band,評価帯
+domain,Domain,ドメイン
+gap_to_next_level,Gap to Next Level,次レベルとの差
+acceleration,Acceleration,加速力
+cod,Change of Direction,方向転換力
+reactive_strength,Reactive Strength,反応ストレングス
+explosive_power,Explosive Power,爆発力
+upper_body_power,Upper Body Power,上半身パワー
+advanced,Advanced,上級
+developing,Developing,発展中
+foundation,Foundation,基礎段階
+early_stage,Early Stage,初期段階
+competitive,Competitive,競技レベル
+elite,Elite,エリート
+acceleration_score,Acceleration Score,加速力スコア
+cod_score,COD Score,方向転換力スコア
+reactive_strength_score,Reactive Strength Score,反応ストレングススコア
+explosive_power_score,Explosive Power Score,爆発力スコア
+upper_body_power_score,Upper Body Power Score,上半身パワースコア
+test_type,Test Type,テスト種別
+metric_name,Metric Name,指標名
+best_value,Best Value,ベスト値
+session_id,Session ID,セッションID
+quality_flag,Quality Flag,品質フラグ
+side,Side,左右
+trials,Trials,試技数

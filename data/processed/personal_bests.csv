@@ -8,9 +8,9 @@ togo,SJ,best_jump_height_cm,23.0,cm,2026-03-08,2026-03-08_test1,
 togo,bounding_10,best_distance_cm,1595.0,cm,2026-03-08,2026-03-08_test1,
 togo,hop_5,best_distance_cm,702.0,cm,2026-03-08,2026-03-08_test1,left
 togo,hop_5,best_distance_cm,695.0,cm,2026-03-08,2026-03-08_test1,right
+togo,medicine_ball_throw_2kg,best_distance_m,3.5,m,2026-03-08,2026-03-08_test1,
 togo,pro_agility,best_total_time_s,6.37,s,2026-03-08,2026-03-08_test1,left
 togo,pro_agility,best_total_time_s,6.31,s,2026-03-08,2026-03-08_test1,right
-togo,rugby_ball_throw,best_distance_m,7.37,m,2026-03-08,2026-03-08_test1,
 togo,sprint_30m,best_fly_10m_s,1.8,s,2026-03-08,2026-03-08_test1,
 togo,sprint_30m,best_fly_5m_s,0.91,s,2026-03-08,2026-03-08_test1,
 togo,sprint_30m,best_split_10m_s,1.62,s,2026-03-08,2026-03-08_test1,
