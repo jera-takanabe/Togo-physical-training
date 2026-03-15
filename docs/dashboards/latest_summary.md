@@ -4,6 +4,10 @@
 
 ![Radar Chart](radar_chart.png)
 
+![Rugby Physical Score Trend](rugby_physical_score_trend.png)
+
+![Domain Scores Trend](domain_scores_trend.png)
+
 ## ラグビー総合フィジカルスコア
 
 - スコア: **74.81**

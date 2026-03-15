@@ -114,6 +114,10 @@ def build_summary() -> str:
     lines.append("")
     lines.append("![Radar Chart](radar_chart.png)")
     lines.append("")
+    lines.append("![Rugby Physical Score Trend](rugby_physical_score_trend.png)")
+    lines.append("")
+    lines.append("![Domain Scores Trend](domain_scores_trend.png)")
+    lines.append("")
 
     if not rugby_score.empty:
         row = rugby_score.iloc[0]
