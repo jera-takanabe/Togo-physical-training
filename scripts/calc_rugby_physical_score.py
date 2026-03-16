@@ -227,6 +227,30 @@ def extract_test_results_from_processed() -> pd.DataFrame:
                     "raw_value": float(r["best_split_20m_s"]),
                     "unit": "s",
                 })
+            if pd.notna(r.get("best_split_30m_s")):
+                rows.append({
+                    "athlete": athlete,
+                    "session_date": session_date,
+                    "test": "30m_sprint",
+                    "raw_value": float(r["best_split_30m_s"]),
+                    "unit": "s",
+                })
+            if pd.notna(r.get("best_fly_5m_s")):
+                rows.append({
+                    "athlete": athlete,
+                    "session_date": session_date,
+                    "test": "fly5",
+                    "raw_value": float(r["best_fly_5m_s"]),
+                    "unit": "s",
+                })
+            if pd.notna(r.get("best_fly_10m_s")):
+                rows.append({
+                    "athlete": athlete,
+                    "session_date": session_date,
+                    "test": "fly10",
+                    "raw_value": float(r["best_fly_10m_s"]),
+                    "unit": "s",
+                })
 
     cod = _safe_read_csv(PROCESSED / "cod_sessions.csv")
     if not cod.empty:

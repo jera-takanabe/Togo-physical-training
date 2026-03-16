@@ -1,8 +1,12 @@
 test,unit,general_youth_p50,youth_athlete_p50,elite_u18_p50,world_elite_p50,direction,domain,floor_anchor
 10m_sprint,s,2.0,1.85,1.75,1.65,lower,acceleration,2.10
 20m_sprint,s,4.2,4.0,3.85,3.6,lower,acceleration,4.40
+30m_sprint,s,5.8,5.4,5.0,4.6,lower,acceleration,6.2
+fly5,s,1.20,1.10,1.00,0.90,lower,max_velocity,1.30
+fly10,s,2.30,2.10,1.95,1.80,lower,max_velocity,2.50
 cmj,cm,28.0,35.0,45.0,55.0,higher,explosive_power,22.0
 standing_long_jump,m,1.7,2.0,2.3,2.6,higher,explosive_power,1.50
 pro_agility_5_10_5,s,6.6,6.2,5.8,5.3,lower,cod,7.00
 rsi,ratio,1.2,1.6,2.0,2.6,higher,reactive_strength,0.90
 medicine_ball_throw_2kg,m,3.5,4.5,5.5,6.5,higher,upper_body_power,2.80
+sprint_20_30_segment_velocity,m/s,5.0,5.5,6.5,7.5,higher,max_velocity,4.5
