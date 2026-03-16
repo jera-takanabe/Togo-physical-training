@@ -83,6 +83,10 @@ def main():
     ax.set_yticks([20, 40, 60, 80, 100])
     ax.set_yticklabels(["20", "40", "60", "80", "100"], fontsize=10)
 
+    world_values = [100.0] * n
+    world_values += world_values[:1]
+    ax.plot(angles, world_values, linewidth=1.5, linestyle="--", alpha=0.7)
+
     ax.plot(angles, values, linewidth=2)
     ax.fill(angles, values, alpha=0.25)
 

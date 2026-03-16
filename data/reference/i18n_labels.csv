@@ -49,3 +49,7 @@ session_id,Session ID,セッションID
 quality_flag,Quality Flag,品質フラグ
 side,Side,左右
 trials,Trials,試技数
+radar_score,Radar Score,到達率スコア
+benchmark,Benchmark,基準到達
+world,World,世界水準
+competitive,Competitive,競技水準

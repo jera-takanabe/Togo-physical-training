@@ -62,17 +62,21 @@ def ensure_dirs() -> None:
 def load_benchmarks() -> pd.DataFrame:
     df = pd.read_csv(BENCHMARK_PATH)
     required = {
-        "test",
+         "test",
         "unit",
         "general_youth_p50",
         "youth_athlete_p50",
         "elite_u18_p50",
         "world_elite_p50",
+        "direction",
+        "domain",
+        "floor_anchor",
     }
     missing = required - set(df.columns)
     if missing:
         raise ValueError(f"benchmark_values.csv missing columns: {sorted(missing)}")
     return df
+
 
 
 def interpolate_score(value: float, g: float, a: float, e: float, w: float, direction: str) -> float:
@@ -118,20 +122,60 @@ def interpolate_score(value: float, g: float, a: float, e: float, w: float, dire
             return clamp(left_score + ratio * (right_score - left_score))
     return clamp(100.0)
 
+def interpolate_radar_score(value: float, floor: float, world: float, direction: str) -> float:
+    def clamp(x: float) -> float:
+        return max(0.0, min(100.0, x))
+
+    if pd.isna(value) or pd.isna(floor) or pd.isna(world):
+        return 0.0
+
+    if direction == "higher":
+        if world == floor:
+            return 100.0
+        score = 100.0 * (value - floor) / (world - floor)
+        return clamp(score)
+
+    if direction == "lower":
+        if floor == world:
+            return 100.0
+        score = 100.0 * (floor - value) / (floor - world)
+        return clamp(score)
+
+    raise ValueError(f"Unknown direction: {direction}")
+
+def interpolate_radar_score(value: float, floor: float, world: float, direction: str) -> float:
+    def clamp(x: float) -> float:
+        return max(0.0, min(100.0, x))
+
+    if pd.isna(value) or pd.isna(floor) or pd.isna(world):
+        return 0.0
+
+    if direction == "higher":
+        if world == floor:
+            return 100.0
+        score = 100.0 * (value - floor) / (world - floor)
+        return clamp(score)
+
+    if direction == "lower":
+        if floor == world:
+            return 100.0
+        score = 100.0 * (floor - value) / (floor - world)
+        return clamp(score)
+
+    raise ValueError(f"Unknown direction: {direction}")
 
 def score_band(score: float) -> str:
-    if score >= 90:
-        return "Elite"
+    if score >= 95:
+        return "World"
     if score >= 80:
-        return "Competitive"
-    if score >= 70:
-        return "Advanced"
+        return "Elite"
     if score >= 60:
+        return "Competitive"
+    if score >= 40:
+        return "Benchmark"
+    if score >= 20:
         return "Developing"
-    if score >= 50:
-        return "Foundation"
-    return "Early Stage"
-
+    return "Foundation"
 
 def next_level_gap(value: float, benchmark_row: pd.Series, direction: str) -> Optional[float]:
     levels = [
@@ -260,11 +304,12 @@ def calculate_test_scores(test_results: pd.DataFrame, benchmarks: pd.DataFrame) 
     out_rows = []
     for _, row in test_results.iterrows():
         test = row["test"]
-        if test not in benchmark_map or test not in TEST_CONFIG:
+        if test not in benchmark_map:
             continue
 
         b = benchmark_map[test]
-        direction = TEST_CONFIG[test]["direction"]
+        direction = str(b["direction"])
+        domain = str(b["domain"])
 
         score = interpolate_score(
             value=float(row["raw_value"]),
@@ -275,6 +320,13 @@ def calculate_test_scores(test_results: pd.DataFrame, benchmarks: pd.DataFrame) 
             direction=direction,
         )
 
+        radar_score = interpolate_radar_score(
+            value=float(row["raw_value"]),
+            floor=float(b["floor_anchor"]),
+            world=float(b["world_elite_p50"]),
+            direction=direction,
+        )
+
         out_rows.append({
             "athlete": row["athlete"],
             "session_date": row["session_date"],
@@ -282,18 +334,18 @@ def calculate_test_scores(test_results: pd.DataFrame, benchmarks: pd.DataFrame) 
             "raw_value": row["raw_value"],
             "unit": row["unit"],
             "score": round(score, 2),
-            "score_band": score_band(score),
-            "domain": TEST_CONFIG[test]["domain"],
+            "radar_score": round(radar_score, 2),
+            "score_band": score_band(radar_score),
+            "domain": domain,
             "gap_to_next_level": next_level_gap(float(row["raw_value"]), b, direction),
         })
 
     return pd.DataFrame(out_rows)
 
-
 def calculate_domain_scores(test_scores: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for (athlete, session_date), group in test_scores.groupby(["athlete", "session_date"]):
-        score_map = {r["test"]: float(r["score"]) for _, r in group.iterrows()}
+        score_map = {r["test"]: float(r["radar_score"]) for _, r in group.iterrows()}
 
         acceleration = score_map.get("10m_sprint", 0.0) * 0.6 + score_map.get("20m_sprint", 0.0) * 0.4
         cod = score_map.get("pro_agility_5_10_5", 0.0)
@@ -312,7 +364,6 @@ def calculate_domain_scores(test_scores: pd.DataFrame) -> pd.DataFrame:
         })
 
     return pd.DataFrame(rows)
-
 
 def calculate_rugby_physical_score(domain_scores: pd.DataFrame) -> pd.DataFrame:
     rows = []
@@ -346,16 +397,13 @@ def calculate_rugby_physical_score(domain_scores: pd.DataFrame) -> pd.DataFrame:
                 for name in available_domains.keys()
             )
 
-        weakest_sorted = sorted(
-            (
-                (name, score - PRIORITY_BONUS.get(name, 0.0))
-                for name, score in available_domains.items()
-            ),
-            key=lambda x: x[1]
-        )
-
         strongest = max(available_domains.items(), key=lambda x: x[1])[0]
         weakest = min(available_domains.items(), key=lambda x: x[1])[0]
+
+        weakest_sorted = sorted(
+            available_domains.items(),
+            key=lambda x: x[1]
+        )
 
         rows.append({
             "athlete": row["athlete"],
@@ -368,7 +416,6 @@ def calculate_rugby_physical_score(domain_scores: pd.DataFrame) -> pd.DataFrame:
             "priority_2": weakest_sorted[1][0] if len(weakest_sorted) > 1 else weakest_sorted[0][0],
         })
     return pd.DataFrame(rows)
-
 
 def main() -> None:
     ensure_dirs()

@@ -162,7 +162,7 @@ def build_summary() -> str:
     if not test_scores.empty:
         preferred = [
             "athlete", "session_date", "test", "raw_value", "unit",
-            "score", "score_band", "domain", "gap_to_next_level",
+            "radar_score", "score_band", "domain", "gap_to_next_level",
         ]
         existing = [c for c in preferred if c in test_scores.columns]
         lines.append(f"## {labels.get('test_scores', 'Test Scores')}")

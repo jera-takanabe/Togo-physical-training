@@ -33,11 +33,11 @@ OUTPUT_RADAR = OUTPUT_DIR / "target_radar_v2.png"
 OUTPUT_GAP = OUTPUT_DIR / "target_gap_summary.md"
 
 AXES = [
-    ("10m_s", "10m_sprint", "acceleration", "lower", None),
-    ("COD_s", "pro_agility_5_10_5", "cod", "lower", None),
-    ("RSI", "rsi", "reactive_strength", "higher", None),
-    ("CMJ_cm", "cmj", "explosive_power", "higher", None),
-    ("MBT_m", "medicine_ball_throw_2kg", "upper_body_power", "higher", None),
+    ("acceleration_score", "acceleration"),
+    ("cod_score", "cod"),
+    ("reactive_strength_score", "reactive_strength"),
+    ("explosive_power_score", "explosive_power"),
+    ("upper_body_power_score", "upper_body_power"),
 ]
 
 RAW_LABELS = {
@@ -46,6 +46,24 @@ RAW_LABELS = {
     "rsi": ("RSI", ""),
     "cmj": ("CMJ", "cm"),
     "medicine_ball_throw_2kg": ("MBT 2kg", "m"),
+}
+
+GAP_AXES = [
+    ("10m_s", "10m_sprint", "acceleration", "lower", None),
+    ("COD_s", "pro_agility_5_10_5", "cod", "lower", None),
+    ("RSI", "rsi", "reactive_strength", "higher", None),
+    ("CMJ_cm", "cmj", "explosive_power", "higher", None),
+    ("MBT_m", "medicine_ball_throw_2kg", "upper_body_power", "higher", None),
+]
+
+TEST_TO_DOMAIN = {
+    "10m_sprint": ("acceleration_score", 0.6),
+    "20m_sprint": ("acceleration_score", 0.4),
+    "pro_agility_5_10_5": ("cod_score", 1.0),
+    "rsi": ("reactive_strength_score", 1.0),
+    "cmj": ("explosive_power_score", 0.6),
+    "standing_long_jump": ("explosive_power_score", 0.4),
+    "medicine_ball_throw_2kg": ("upper_body_power_score", 1.0),
 }
 
 for font_name in ["Noto Sans JP", "Yu Gothic", "Meiryo", "MS Gothic"]:
@@ -105,6 +123,27 @@ def interpolate_score(value: float, g: float, a: float, e: float, w: float, dire
     return 100.0
 
 
+def interpolate_radar_score(value: float, floor: float, world: float, direction: str) -> float:
+    def clamp(x: float) -> float:
+        return max(0.0, min(100.0, x))
+
+    if pd.isna(value) or pd.isna(floor) or pd.isna(world):
+        return 0.0
+
+    if direction == "higher":
+        if world == floor:
+            return 100.0
+        score = 100.0 * (value - floor) / (world - floor)
+        return clamp(score)
+
+    if direction == "lower":
+        if floor == world:
+            return 100.0
+        score = 100.0 * (floor - value) / (floor - world)
+        return clamp(score)
+
+    raise ValueError(f"Unknown direction: {direction}")
+
 def load_current_test_scores() -> pd.DataFrame:
     df = pd.read_csv(TEST_SCORES_PATH)
     df = latest_rows_session(df)
@@ -112,6 +151,13 @@ def load_current_test_scores() -> pd.DataFrame:
         raise ValueError("No latest test_scores rows found.")
     return df
 
+def load_current_domain_scores() -> pd.DataFrame:
+    path = ANALYSIS_DIR / "domain_scores.csv"
+    df = pd.read_csv(path)
+    df = latest_rows_session(df)
+    if df.empty:
+        raise ValueError("No latest domain_scores rows found.")
+    return df
 
 def load_targets(stage: str) -> pd.DataFrame:
     df = pd.read_csv(TARGET_PATH)
@@ -121,9 +167,15 @@ def load_targets(stage: str) -> pd.DataFrame:
     return out
 
 
-def build_current_score_map(test_scores: pd.DataFrame) -> dict[str, float]:
-    return {str(r["test"]): float(r["score"]) for _, r in test_scores.iterrows()}
-
+def build_current_score_map(domain_scores: pd.DataFrame) -> dict[str, float]:
+    row = domain_scores.iloc[0]
+    return {
+        "acceleration_score": float(row.get("acceleration_score", 0.0)),
+        "cod_score": float(row.get("cod_score", 0.0)),
+        "reactive_strength_score": float(row.get("reactive_strength_score", 0.0)),
+        "explosive_power_score": float(row.get("explosive_power_score", 0.0)),
+        "upper_body_power_score": float(row.get("upper_body_power_score", 0.0)),
+    }
 
 def build_current_raw_map(test_scores: pd.DataFrame) -> dict[str, float]:
     return {str(r["test"]): float(r["raw_value"]) for _, r in test_scores.iterrows()}
@@ -131,26 +183,57 @@ def build_current_raw_map(test_scores: pd.DataFrame) -> dict[str, float]:
 
 def build_target_score_map(level_row: pd.Series, benchmark_values: pd.DataFrame) -> dict[str, float]:
     bench_map = {str(r["test"]): r for _, r in benchmark_values.iterrows()}
-    out = {}
-    for target_col, test_name, _, direction, _ in AXES:
+
+    domain_totals: dict[str, float] = {
+        "acceleration_score": 0.0,
+        "cod_score": 0.0,
+        "reactive_strength_score": 0.0,
+        "explosive_power_score": 0.0,
+        "upper_body_power_score": 0.0,
+    }
+
+    domain_weights: dict[str, float] = {
+        "acceleration_score": 0.0,
+        "cod_score": 0.0,
+        "reactive_strength_score": 0.0,
+        "explosive_power_score": 0.0,
+        "upper_body_power_score": 0.0,
+    }
+
+    for target_col, test_name, _, direction, _ in [
+        ("10m_s", "10m_sprint", "acceleration", "lower", None),
+        ("COD_s", "pro_agility_5_10_5", "cod", "lower", None),
+        ("RSI", "rsi", "reactive_strength", "higher", None),
+        ("CMJ_cm", "cmj", "explosive_power", "higher", None),
+        ("MBT_m", "medicine_ball_throw_2kg", "upper_body_power", "higher", None),
+    ]:
         if pd.isna(level_row.get(target_col)):
             continue
-        raw_target = float(level_row[target_col])
+        if test_name not in bench_map:
+            continue
+
         b = bench_map[test_name]
-        out[target_col] = interpolate_score(
-            raw_target,
-            float(b["general_youth_p50"]),
-            float(b["youth_athlete_p50"]),
-            float(b["elite_u18_p50"]),
-            float(b["world_elite_p50"]),
-            direction,
+        radar_score = interpolate_radar_score(
+            value=float(level_row[target_col]),
+            floor=float(b["floor_anchor"]),
+            world=float(b["world_elite_p50"]),
+            direction=str(b["direction"]),
         )
+
+        domain_key, weight = TEST_TO_DOMAIN[test_name]
+        domain_totals[domain_key] += radar_score * weight
+        domain_weights[domain_key] += weight
+
+    out = {}
+    for domain_key in domain_totals.keys():
+        if domain_weights[domain_key] > 0:
+            out[domain_key] = domain_totals[domain_key] / domain_weights[domain_key]
+
     return out
 
-
 def create_radar(current_scores: dict[str, float], target_maps: dict[str, dict[str, float]], labels: dict[str, str], stage: str) -> None:
-    axis_names = [map_value(domain_key, labels) for _, _, domain_key, _, _ in AXES]
-    current_values = [float(current_scores.get(test_name, 0.0)) for _, test_name, _, _, _ in AXES]
+    axis_names = [map_value(domain_key, labels) for _, domain_key in AXES]
+    current_values = [float(current_scores.get(score_col, 0.0)) for score_col, _ in AXES]
 
     angles = np.linspace(0, 2 * np.pi, len(axis_names), endpoint=False).tolist()
     angles += angles[:1]
@@ -165,23 +248,26 @@ def create_radar(current_scores: dict[str, float], target_maps: dict[str, dict[s
     ax.set_yticks([20, 40, 60, 80, 100])
     ax.set_yticklabels(["20", "40", "60", "80", "100"], fontsize=10)
 
+    world_values = [100.0] * len(axis_names)
+    world_values += world_values[:1]
+    ax.plot(angles, world_values, linewidth=1.5, linestyle="--", alpha=0.7, label="World")
+
     current_plot = current_values + current_values[:1]
     ax.plot(angles, current_plot, linewidth=2, label="Current")
     ax.fill(angles, current_plot, alpha=0.18)
 
     style_map = {"Benchmark": "-.", "Competitive": "--", "Elite": ":"}
     for level_name, score_map in target_maps.items():
-        vals = [float(score_map.get(target_col, 0.0)) for target_col, _, _, _, _ in AXES]
+        vals = [float(score_map.get(score_col, 0.0)) for score_col, _ in AXES]
         vals += vals[:1]
         ax.plot(angles, vals, linewidth=2, linestyle=style_map.get(level_name, "--"), label=level_name)
 
     ax.set_title(f"Target Radar ({stage})", pad=20, fontsize=14)
-    ax.legend(loc="upper right", bbox_to_anchor=(1.28, 1.12))
+    ax.legend(loc="upper right", bbox_to_anchor=(1.30, 1.12))
     fig.tight_layout()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUTPUT_RADAR, dpi=150, bbox_inches="tight")
     plt.close(fig)
-
 
 def format_gap(current: float, target: float, lower_better: bool) -> str:
     if lower_better:
@@ -207,7 +293,7 @@ def create_gap_summary(test_scores: pd.DataFrame, targets: pd.DataFrame, stage: 
     current_raw = build_current_raw_map(test_scores)
 
     lines = [f"## Target Gap Summary ({stage})", "", "### Elite 目標との差", ""]
-    for target_col, test_name, _, direction, _ in AXES:
+    for target_col, test_name, _, direction, _ in GAP_AXES:
         label, unit = RAW_LABELS[test_name]
         current = current_raw.get(test_name, float("nan"))
         target = float(elite.get(target_col, float("nan")))
@@ -225,10 +311,11 @@ def main() -> None:
     labels = load_labels()
     stage = get_current_stage()
     test_scores = load_current_test_scores()
+    domain_scores = load_current_domain_scores()
     benchmark_values = pd.read_csv(BENCHMARK_PATH)
     targets = load_targets(stage)
 
-    current_score_map = build_current_score_map(test_scores)
+    current_score_map = build_current_score_map(domain_scores)
     target_maps = {}
     for _, row in targets.iterrows():
         target_maps[str(row["Level"])] = build_target_score_map(row, benchmark_values)
