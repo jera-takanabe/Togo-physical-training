@@ -27,3 +27,7 @@
 - `docs/athletes/son/physical_map.md` フィジカル地図
 - `docs/athletes/son/roadmap.md` 年齢別ロードマップ
 - `docs/dashboards/physical_dashboard.md` 俯瞰ダッシュボード
+
+## 📍 ドキュメント入口
+
+👉 docs/specs/document_map.md
