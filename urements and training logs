@@ -1,0 +1,104 @@
+warning: in the working copy of 'data/raw/cod_tests_raw.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'data/raw/horizontal_tests_raw.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'data/raw/sprint_tests_raw.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'data/raw/throw_tests_raw.csv', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/data/raw/cod_tests_raw.csv b/data/raw/cod_tests_raw.csv[m
+[1mindex fd5cfcd..11a5a24 100644[m
+[1m--- a/data/raw/cod_tests_raw.csv[m
+[1m+++ b/data/raw/cod_tests_raw.csv[m
+[36m@@ -1,3 +1,5 @@[m
+ session_id,date,athlete,test_type,trial,side,valid,device,video_file,fps,start_rule,finish_rule,segment_1_s,segment_2_s,segment_3_s,total_time_s,camera_position,surface,shoes,wind,sleep_hours,fatigue,pain,memo[m
+ 2026-03-08_test1,2026-03-08,togo,pro_agility,1,right,true,Kinovea,pr-right_001.MOV,240,体重移動開始,胸,,,,6.31,side_15m,アスファルト,スニーカー,0,9.0,2,0,[m
+[31m-2026-03-08_test1,2026-03-08,togo,pro_agility,1,left,true,Kinovea,pr-left_001.MOV,240,体重移動開始,胸,,,,6.37,side_15m,アスファルト,スニーカー,0,9.0,2,0,[m
+\ No newline at end of file[m
+[32m+[m[32m2026-03-08_test1,2026-03-08,togo,pro_agility,1,left,true,Kinovea,pr-left_001.MOV,240,体重移動開始,胸,,,,6.37,side_15m,アスファルト,スニーカー,0,9.0,2,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,pro_agility,1,right,true,Kinovea,IMG_0645.MOV,163.65,体重移動開始,胸,1.97,2.987,1.975,6.932,side_15m,河川敷,トレシュー,0,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,pro_agility,1,left,true,Kinovea,IMG_0646.MOV,163.29,体重移動開始,胸,1.969,2.132,1.978,6.079,side_15m,河川敷,トレシュー,0,8.0,3,0,[m
+\ No newline at end of file[m
+[1mdiff --git a/data/raw/horizontal_tests_raw.csv b/data/raw/horizontal_tests_raw.csv[m
+[1mindex 5541314..a3dfd2b 100644[m
+[1m--- a/data/raw/horizontal_tests_raw.csv[m
+[1m+++ b/data/raw/horizontal_tests_raw.csv[m
+[36m@@ -9,4 +9,16 @@[m [msession_id,date,athlete,test_type,trial,side,valid,device,video_file,fps,distanc[m
+ 2026-03-08_test1,2026-03-08,togo,hop_5,1,left,true,Kinovea,5hop-right_001.MOV,240,702,アスファルト,スニーカー,9.0,2,0,[m
+ 2026-03-08_test1,2026-03-08,togo,hop_5,2,left,true,Kinovea,5hop-left_001.MOV,240,589,アスファルト,スニーカー,9.0,2,0,[m
+ 2026-03-08_test1,2026-03-08,togo,hop_5,1,right,true,Kinovea,5hop-right_002.MOV,240,695,アスファルト,スニーカー,9.0,2,0,[m
+[31m-2026-03-08_test1,2026-03-08,togo,hop_5,2,right,true,Kinovea,5hop-left_002.MOV,240,611,アスファルト,スニーカー,9.0,2,0,[m
+\ No newline at end of file[m
+[32m+[m[32m2026-03-08_test1,2026-03-08,togo,hop_5,2,right,true,Kinovea,5hop-left_002.MOV,240,611,アスファルト,スニーカー,9.0,2,0,[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,standing_long_jump,1,,true,Kinovea,,,185,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,standing_long_jump,2,,true,Kinovea,,,189,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,standing_long_jump,3,,true,Kinovea,,,198,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,bounding_10,1,,true,Kinovea,,,1756,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,bounding_10,2,,true,Kinovea,,,1760,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,hop_5,1,left,true,Kinovea,,,688,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,hop_5,2,left,true,Kinovea,,,710,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,hop_5,1,right,true,Kinovea,,,773,河川敷,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,hop_5,2,right,true,Kinovea,,,745,河川敷,トレシュー,8.0,3,0,[m
+\ No newline at end of file[m
+[1mdiff --git a/data/raw/jump_tests_raw.csv b/data/raw/jump_tests_raw.csv[m
+[1mindex 524acfb..867f958 100644[m
+[1m--- a/data/raw/jump_tests_raw.csv[m
+[1m+++ b/data/raw/jump_tests_raw.csv[m
+[36m@@ -9,4 +9,13 @@[m [msession_id,date,athlete,test_type,trial,valid,device,video_file,fps,jump_height_[m
+ [m
+ 2026-03-08_test1,2026-03-08,togo,DJ,1,true,MyJumpLab,DJ_001.MOV,240,11.3,192,304,1.59,アスファルト,スニーカー,9.0,2,0,[m
+ 2026-03-08_test1,2026-03-08,togo,DJ,2,true,MyJumpLab,DJ_002.MOV,240,14.0,196,338,1.72,アスファルト,スニーカー,9.0,2,0,[m
+[31m-2026-03-08_test1,2026-03-08,togo,DJ,3,true,MyJumpLab,DJ_003.MOV,240,13.3,196,329,1.68,アスファルト,スニーカー,9.0,2,0,[m
+\ No newline at end of file[m
+[32m+[m[32m2026-03-08_test1,2026-03-08,togo,DJ,3,true,MyJumpLab,DJ_003.MOV,240,13.3,196,329,1.68,アスファルト,スニーカー,9.0,2,0,[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,CMJ,1,true,MyJumpLab,IMG_E0651.MOV,30,14,,,,コンクリート,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,CMJ,2,true,MyJumpLab,IMG_E0652.MOV,30,15.4,,,,コンクリート,トレシュー,8.0,3,0,[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,SJ,1,true,MyJumpLab,IMG_E0653.MOV,30,12.5,,,,コンクリート,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,SJ,2,true,MyJumpLab,IMG_E0654.MOV,30,11.5,,,,コンクリート,トレシュー,8.0,3,0,[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,DJ,1,true,MyJumpLab,IMG_E0649.MOV,30,15.8,171,359,2.1,コンクリート,トレシュー,8.0,3,0,[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,DJ,2,true,MyJumpLab,IMG_E0650.MOV,30,9.9,130,284,2.19,コンクリート,トレシュー,8.0,3,0,[m
+\ No newline at end of file[m
+[1mdiff --git a/data/raw/measurement_sessions.csv b/data/raw/measurement_sessions.csv[m
+[1mindex 64eaefe..e35b25b 100644[m
+[1m--- a/data/raw/measurement_sessions.csv[m
+[1m+++ b/data/raw/measurement_sessions.csv[m
+[36m@@ -1,2 +1,3 @@[m
+ session_id,date,athlete,location,surface,shoes,sleep_hours,fatigue,pain,body_weight_kg,height_cm,practice_load,weather,temperature_c,wind,notes[m
+[31m-2026-03-08_test1,2026-03-08,togo,しぎの駐車場,アスファルト,スニーカー,9.0,2,0,61.0,149,3,sunny,15,0,initial full trial session[m
+\ No newline at end of file[m
+[32m+[m[32m2026-03-08_test1,2026-03-08,togo,しぎの駐車場,アスファルト,スニーカー,9.0,2,0,61.0,149,3,sunny,15,0,initial full trial session[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,河川敷,芝生,トレシュー,8,3,0,61.5,149,3,sunny,12,0,second trial session,[m
+\ No newline at end of file[m
+[1mdiff --git a/data/raw/sprint_tests_raw.csv b/data/raw/sprint_tests_raw.csv[m
+[1mindex 27cc32c..275a937 100644[m
+[1m--- a/data/raw/sprint_tests_raw.csv[m
+[1m+++ b/data/raw/sprint_tests_raw.csv[m
+[36m@@ -1,3 +1,6 @@[m
+ session_id,date,athlete,test_type,trial,valid,device,video_file,fps,start_rule,finish_rule,split_5m_s,split_10m_s,split_20m_s,split_30m_s,fly_5m_s,fly_10m_s,total_time_s,camera_position,surface,shoes,wind,sleep_hours,fatigue,pain,memo[m
+ 2026-03-08_test1,2026-03-08,togo,sprint_30m,1,true,Kinovea,30sprin_001.MOV,240,後足の離地,胸,,1.62,3.45,5.39,0.93,1.94,5.39,side_15m,アスファルト,スニーカー,0,9.0,2,0,[m
+[31m-2026-03-08_test1,2026-03-08,togo,sprint_30m,2,true,Kinovea,30sprin_002.MOV,240,後足の離地,胸,,2.05,3.82,5.63,0.91,1.80,5.63,side_15m,アスファルト,スニーカー,0,9.0,2,0,[m
+\ No newline at end of file[m
+[32m+[m[32m2026-03-08_test1,2026-03-08,togo,sprint_30m,2,true,Kinovea,30sprin_002.MOV,240,後足の離地,胸,,2.05,3.82,5.63,0.91,1.80,5.63,side_15m,アスファルト,スニーカー,0,9.0,2,0,[m
+[32m+[m[32m2026-4-16_test1,2026-4-16,togo,sprint_30m,1,true,Kinovea,30sprin_001.MOV,163.89,後足の離地,胸,1.64,2.62,4.45,6.21,0.85,0.9,6.21,side_15m,河川敷,トレシュー,0,8.0,3,0,[m
+[32m+[m[32m2026-4-16_test1,2026-4-16,togo,sprint_30m,2,true,Kinovea,30sprin_002.MOV,163.8,後足の離地,胸,1.58,3.02,4.27,5.95,0.82,0.85,5.95,side_15m,河川敷,トレシュー,0,8.0,3,0,[m
+[32m+[m[32m2026-4-16_test1,2026-4-16,togo,sprint_30m,3,true,Kinovea,30sprin_003.MOV,163.01,後足の離地,胸,1.6,2.55,4.29,6.00,0.85,0.86,6.00,side_15m,河川敷,トレシュー,0,8.0,3,0,[m
+[1mdiff --git a/data/raw/throw_tests_raw.csv b/data/raw/throw_tests_raw.csv[m
+[1mindex 586fe66..b43d564 100644[m
+[1m--- a/data/raw/throw_tests_raw.csv[m
+[1m+++ b/data/raw/throw_tests_raw.csv[m
+[36m@@ -1,4 +1,8 @@[m
+ session_id,date,athlete,test_type,trial,valid,device,video_file,distance_m,surface,shoes,sleep_hours,fatigue,pain,memo[m
+[31m-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,1,true,,,3.5,アスファルト,スニーカー,9.0,2,0,placeholder benchmark p50 until actual measurement[m
+[31m-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,2,true,,,3.5,アスファルト,スニーカー,9.0,2,0,placeholder benchmark p50 until actual measurement[m
+[31m-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,3,true,,,3.5,アスファルト,スニーカー,9.0,2,0,placeholder benchmark p50 until actual measurement[m
+\ No newline at end of file[m
+[32m+[m[32m2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,1,true,,,2.65,コンクリート,スニーカー,9.0,2,0,座位[m
+[32m+[m[32m2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,2,true,,,2.80,コンクリート,スニーカー,9.0,2,0,座位[m
+[32m+[m[32m2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,3,true,,,2.48,コンクリート,スニーカー,9.0,2,0,座位[m
+[32m+[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,1,true,,,2.68,コンクリート,スニーカー,8.0,3,0,座位[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,2,true,,,3.00,コンクリート,スニーカー,8.0,3,0,座位[m
+[32m+[m[32m2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,3,true,,,2.80,コンクリート,スニーカー,8.0,3,0,座位[m
+\ No newline at end of file[m

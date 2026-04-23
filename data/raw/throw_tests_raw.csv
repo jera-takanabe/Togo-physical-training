@@ -1,4 +1,8 @@
 session_id,date,athlete,test_type,trial,valid,device,video_file,distance_m,surface,shoes,sleep_hours,fatigue,pain,memo
-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,1,true,,,3.5,アスファルト,スニーカー,9.0,2,0,placeholder benchmark p50 until actual measurement
-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,2,true,,,3.5,アスファルト,スニーカー,9.0,2,0,placeholder benchmark p50 until actual measurement
-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,3,true,,,3.5,アスファルト,スニーカー,9.0,2,0,placeholder benchmark p50 until actual measurement
+2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,1,true,,,2.65,コンクリート,スニーカー,9.0,2,0,座位
+2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,2,true,,,2.80,コンクリート,スニーカー,9.0,2,0,座位
+2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,3,true,,,2.48,コンクリート,スニーカー,9.0,2,0,座位
+
+2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,1,true,,,2.68,コンクリート,スニーカー,8.0,3,0,座位
+2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,2,true,,,3.00,コンクリート,スニーカー,8.0,3,0,座位
+2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,3,true,,,2.80,コンクリート,スニーカー,8.0,3,0,座位

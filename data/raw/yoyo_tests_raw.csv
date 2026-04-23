@@ -1,0 +1,4 @@
+session_id,date,athlete,test_type,valid,distance_m,level,shuttle,surface,shoes,sleep_hours,fatigue,pain,memo
+2026-03-08_test1,2026-03-20,togo,YOYO_IR1,true,280,,,河川敷,スパイク,9.0,2,0,actual measurement
+
+2026-04-16_test1,2026-04-21,togo,YOYO_IR1,true,820,,,河川敷,トレシュー,8.0,3,0,actual measurement
