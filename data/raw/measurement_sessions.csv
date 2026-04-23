@@ -1,3 +1,3 @@
 session_id,date,athlete,location,surface,shoes,sleep_hours,fatigue,pain,body_weight_kg,height_cm,practice_load,weather,temperature_c,wind,notes
 2026-03-08_test1,2026-03-08,togo,しぎの駐車場,アスファルト,スニーカー,9.0,2,0,61.0,149,3,sunny,15,0,initial full trial session
-2026-04-16_test1,2026-04-16,togo,河川敷,芝生,トレシュー,8,3,0,61.5,149,3,sunny,12,0,second trial session,
+2026-04-16_test1,2026-04-16,togo,河川敷,芝生,トレシュー,8.0,3,0,61.5,149,3,sunny,12,0,second trial session
