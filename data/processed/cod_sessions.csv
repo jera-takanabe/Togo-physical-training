@@ -1,3 +1,5 @@
 session_id,date,athlete,test_type,side,trials,quality_flag,memo,best_segment_1_s,avg_segment_1_s,std_segment_1_s,best_segment_2_s,avg_segment_2_s,std_segment_2_s,best_segment_3_s,avg_segment_3_s,std_segment_3_s,best_total_time_s,avg_total_time_s,std_total_time_s
 2026-03-08_test1,2026-03-08,togo,pro_agility,left,1,ok,,,,,,,,,,,6.37,6.37,
 2026-03-08_test1,2026-03-08,togo,pro_agility,right,1,ok,,,,,,,,,,,6.31,6.31,
+2026-04-16_test1,2026-04-16,togo,pro_agility,left,1,ok,,1.969,1.969,,2.132,2.132,,1.978,1.978,,6.079,6.079,
+2026-04-16_test1,2026-04-16,togo,pro_agility,right,1,ok,,1.97,1.97,,2.987,2.987,,1.975,1.975,,6.932,6.932,

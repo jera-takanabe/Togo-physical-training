@@ -1,2 +1,3 @@
 session_id,date,athlete,test_type,trials,best_distance_m,avg_distance_m,std_distance_m,quality_flag,memo
-2026-03-08_test1,2026-03-08,togo,medicine_ball_throw_2kg,3,3.5,3.5,0.0,ok,
+2026-03-08_test1,2026-03-20,togo,medicine_ball_throw_2kg,3,2.8,2.643333333333333,0.13072447700751713,ok,
+2026-04-16_test1,2026-04-16,togo,medicine_ball_throw_2kg,3,3.0,2.8266666666666667,0.13199326582148882,ok,
