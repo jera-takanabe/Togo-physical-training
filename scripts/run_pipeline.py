@@ -11,10 +11,10 @@ SCRIPTS = [
     BASE_DIR / "scripts" / "build_sessions.py",
     BASE_DIR / "scripts" / "update_personal_bests.py",
     BASE_DIR / "scripts" / "calc_rugby_physical_score.py",
-    BASE_DIR / "scripts" / "build_latest_summary.py",
     BASE_DIR / "scripts" / "generate_radar_chart.py",
     BASE_DIR / "scripts" / "generate_growth_trend_chart.py",
     BASE_DIR / "scripts" / "generate_target_radar_v2.py",
+    BASE_DIR / "scripts" / "build_latest_summary.py",
 ]
 
 
