@@ -87,10 +87,11 @@ def plot_rugby_score_trend(df: pd.DataFrame, labels: dict[str, str]) -> None:
 def plot_domain_scores_trend(df: pd.DataFrame, labels: dict[str, str]) -> None:
     domain_cols = [
         ("acceleration_score", "acceleration"),
-        ("cod_score", "cod"),
-        ("reactive_strength_score", "reactive_strength"),
         ("explosive_power_score", "explosive_power"),
+        ("reactive_strength_score", "reactive_strength"),
+        ("cod_score", "cod"),
         ("upper_body_power_score", "upper_body_power"),
+        ("endurance_score", "endurance"),
     ]
 
     fig, ax = plt.subplots(figsize=(10, 6))
