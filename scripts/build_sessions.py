@@ -18,7 +18,11 @@ COD_SESSION = PROCESSED_DIR / "cod_sessions.csv"
 JUMP_SESSION = PROCESSED_DIR / "jump_sessions.csv"
 HORIZONTAL_SESSION = PROCESSED_DIR / "horizontal_sessions.csv"
 THROW_SESSION = PROCESSED_DIR / "throw_sessions.csv"
+RSA_RAW = RAW_DIR / "rsa_tests_raw.csv"
+YOYO_RAW = RAW_DIR / "yoyo_tests_raw.csv"
 
+RSA_SESSION = PROCESSED_DIR / "rsa_sessions.csv"
+YOYO_SESSION = PROCESSED_DIR / "yoyo_sessions.csv"
 
 def safe_std(series: pd.Series):
     series = series.dropna()
@@ -230,6 +234,80 @@ def build_throw_sessions():
     out_df = pd.DataFrame(rows).sort_values(["date", "athlete", "test_type"]).reset_index(drop=True)
     save_df(out_df, THROW_SESSION)
 
+def build_rsa_sessions():
+    df = load_csv(RSA_RAW)
+    df = filter_valid_rows(df)
+
+    if df.empty:
+        print(f"Skip: {RSA_RAW} is empty or not found")
+        return
+
+    group_cols = ["session_id", "date", "athlete", "test_type"]
+    rows = []
+
+    for keys, group in df.groupby(group_cols, dropna=False):
+        times = pd.to_numeric(group["time_sec"], errors="coerce")
+
+        if times.dropna().empty:
+            continue
+
+        avg_time = times.mean()
+        best_time = times.min()
+        worst_time = times.max()
+
+        decline = (worst_time - best_time) / best_time if best_time > 0 else None
+
+        row = {
+            "session_id": keys[0],
+            "date": keys[1],
+            "athlete": keys[2],
+            "test_type": keys[3],
+            "trials": len(group),
+            "avg_time": avg_time,
+            "best_time": best_time,
+            "worst_time": worst_time,
+            "decline_ratio": decline,
+            "quality_flag": "ok",
+            "memo": "",
+        }
+
+        rows.append(row)
+
+    out_df = pd.DataFrame(rows).sort_values(["date", "athlete"]).reset_index(drop=True)
+    save_df(out_df, RSA_SESSION)
+
+def build_yoyo_sessions():
+    df = load_csv(YOYO_RAW)
+    df = filter_valid_rows(df)
+
+    if df.empty:
+        print(f"Skip: {YOYO_RAW} is empty or not found")
+        return
+
+    group_cols = ["session_id", "date", "athlete", "test_type"]
+    rows = []
+
+    for keys, group in df.groupby(group_cols, dropna=False):
+        distance = pd.to_numeric(group["distance_m"], errors="coerce")
+
+        if distance.dropna().empty:
+            continue
+
+        row = {
+            "session_id": keys[0],
+            "date": keys[1],
+            "athlete": keys[2],
+            "test_type": keys[3],
+            "trials": len(group),
+            "best_distance_m": distance.max(),
+            "quality_flag": "ok",
+            "memo": "",
+        }
+
+        rows.append(row)
+
+    out_df = pd.DataFrame(rows).sort_values(["date", "athlete"]).reset_index(drop=True)
+    save_df(out_df, YOYO_SESSION)
 
 def main():
     build_sprint_sessions()
@@ -237,7 +315,8 @@ def main():
     build_jump_sessions()
     build_horizontal_sessions()
     build_throw_sessions()
-
+    build_rsa_sessions()
+    build_yoyo_sessions()
 
 if __name__ == "__main__":
     main()

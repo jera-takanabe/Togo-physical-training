@@ -49,3 +49,5 @@ session_id,Session ID,セッションID
 quality_flag,Quality Flag,品質フラグ
 side,Side,左右
 trials,Trials,試技数
+endurance,Endurance,持久力
+endurance_score,Endurance Score,持久力スコア

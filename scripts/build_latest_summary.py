@@ -24,13 +24,11 @@ def latest_rows(df: pd.DataFrame, date_col: str = "date") -> pd.DataFrame:
     latest_date = df[date_col].dropna().astype(str).max()
     return df[df[date_col].astype(str) == latest_date].copy()
 
-
-def latest_rows_session(df: pd.DataFrame, date_col: str = "session_date") -> pd.DataFrame:
-    if df.empty or date_col not in df.columns:
+def latest_rows_session(df: pd.DataFrame, session_col: str = "session_id") -> pd.DataFrame:
+    if df.empty or session_col not in df.columns:
         return df
-    latest_date = df[date_col].dropna().astype(str).max()
-    return df[df[date_col].astype(str) == latest_date].copy()
-
+    latest_session = df[session_col].dropna().astype(str).max()
+    return df[df[session_col].astype(str) == latest_session].copy()
 
 def dash(v):
     if pd.isna(v):
@@ -108,9 +106,9 @@ def build_summary() -> str:
         (jump, "date"),
         (horizontal, "date"),
         (throw, "date"),
-        (test_scores, "session_date"),
-        (domain_scores, "session_date"),
-        (rugby_score, "session_date"),
+        (test_scores, "session_id"),
+        (domain_scores, "session_id"),
+        (rugby_score, "session_id"),
     ]:
         if not df.empty and col in df.columns:
             latest_dates.extend(df[col].dropna().astype(str).tolist())
@@ -120,7 +118,7 @@ def build_summary() -> str:
     lines = []
     lines.append(f"# {labels.get('latest_summary', 'Latest Summary')}")
     lines.append("")
-    lines.append(f"- {labels.get('latest_test_date', 'Latest Test Date')}: **{latest_date}**")
+    lines.append(f"- 最新セッション: **{latest_date}**")
     lines.append("")
     lines.append("![Radar Chart](radar_chart.png)")
     lines.append("")
@@ -138,6 +136,14 @@ def build_summary() -> str:
 
     if not rugby_score.empty:
         row = rugby_score.iloc[0]
+        lines.append("## 今日の優先課題")
+        lines.append("")
+        lines.append(f"- 優先①：**{map_value(row['priority_1'], labels)}**")
+        lines.append(f"- 優先②：**{map_value(row['priority_2'], labels)}**")
+        lines.append("")
+
+    if not rugby_score.empty:
+        row = rugby_score.iloc[0]
         lines.append(f"## {labels.get('rugby_physical_score', 'Rugby Physical Score')}")
         lines.append("")
         lines.append(f"- {labels.get('score', 'Score')}: **{row['rugby_physical_score']:.2f}**")
@@ -148,11 +154,12 @@ def build_summary() -> str:
         lines.append(f"- {labels.get('priority_2', 'Priority 2')}: **{map_value(row['priority_2'], labels)}**")
         lines.append("")
 
-    if not domain_scores.empty:
-        preferred = [
-            "athlete", "session_date", "acceleration_score", "cod_score",
-            "reactive_strength_score", "explosive_power_score", "upper_body_power_score",
-        ]
+        if not domain_scores.empty:
+            preferred = [
+                "athlete", "session_id", "acceleration_score", "cod_score",
+                "reactive_strength_score", "explosive_power_score", "upper_body_power_score",
+                "endurance_score",
+            ]
         existing = [c for c in preferred if c in domain_scores.columns]
         lines.append(f"## {labels.get('domain_scores', 'Domain Scores')}")
         lines.append("")

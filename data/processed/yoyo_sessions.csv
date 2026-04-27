@@ -1,0 +1,3 @@
+session_id,date,athlete,test_type,trials,best_distance_m,quality_flag,memo
+2026-03_test1,2026-03-20,togo,YOYO_IR1,1,280,ok,
+2026-04_test1,2026-04-21,togo,YOYO_IR1,1,820,ok,

@@ -57,30 +57,25 @@ def read_csv(path: Path) -> pd.DataFrame:
         raise FileNotFoundError(path)
     return pd.read_csv(path)
 
-
-def prepare_time_series(df: pd.DataFrame, date_col: str = "session_date") -> pd.DataFrame:
+def prepare_time_series(df: pd.DataFrame, date_col: str = "session_id") -> pd.DataFrame:
     if date_col not in df.columns:
         raise ValueError(f"Missing required column: {date_col}")
-
     out = df.copy()
-    out[date_col] = pd.to_datetime(out[date_col], errors="coerce")
-    out = out.dropna(subset=[date_col]).sort_values(date_col)
-    return out
-
+    return out.sort_values(date_col)
 
 def plot_rugby_score_trend(df: pd.DataFrame, labels: dict[str, str]) -> None:
     title = labels.get("rugby_physical_score", "Rugby Physical Score")
     y_label = labels.get("score", "Score")
 
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.plot(df["session_date"], df["rugby_physical_score"], marker="o", linewidth=2)
+    ax.plot(df["session_id"], df["rugby_physical_score"], marker="o", linewidth=2)
     ax.set_title(f"{title} Trend")
-    ax.set_xlabel(labels.get("session_date", "Session Date"))
+    ax.set_xlabel(labels.get("session_id", "Session ID"))
     ax.set_ylabel(y_label)
     ax.set_ylim(0, 100)
     ax.grid(True, alpha=0.3)
 
-    for x, y in zip(df["session_date"], df["rugby_physical_score"]):
+    for x, y in zip(df["session_id"], df["rugby_physical_score"]):
         ax.annotate(f"{y:.1f}", (x, y), textcoords="offset points", xytext=(0, 8), ha="center")
 
     fig.autofmt_xdate()
@@ -109,7 +104,7 @@ def plot_domain_scores_trend(df: pd.DataFrame, labels: dict[str, str]) -> None:
             continue
 
         ax.plot(
-            df["session_date"],
+            df["session_id"],
             series,
             marker="o",
             linewidth=2,
@@ -121,7 +116,7 @@ def plot_domain_scores_trend(df: pd.DataFrame, labels: dict[str, str]) -> None:
         raise ValueError("No plottable domain score columns found.")
 
     ax.set_title(f"{labels.get('domain_scores', 'Domain Scores')} Trend")
-    ax.set_xlabel(labels.get("session_date", "Session Date"))
+    ax.set_xlabel(labels.get("session_id", "Session ID"))
     ax.set_ylabel(labels.get("score", "Score"))
     ax.set_ylim(0, 100)
     ax.grid(True, alpha=0.3)

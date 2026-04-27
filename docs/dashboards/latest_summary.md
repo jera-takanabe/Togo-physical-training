@@ -1,6 +1,6 @@
 # 最新サマリー
 
-- 最新測定日: **2026-04-16**
+- 最新セッション: **2026-04_test1**
 
 ![Radar Chart](radar_chart.png)
 
@@ -14,15 +14,20 @@
 
 ### Elite 目標との差
 
-- 10m: 現在 1.62s / Elite目標 1.60s / 差 0.02s
-- COD: 現在 6.31s / Elite目標 6.10s / 差 0.21s
-- RSI: 現在 1.72 / Elite目標 1.70 / 超過 0.02
-- CMJ: 現在 32.70cm / Elite目標 36.00cm / 差 3.30cm
-- MBT 2kg: 現在 3.50m / Elite目標 4.60m / 差 1.10m
+- 10m: 現在 2.55s / Elite目標 1.60s / 差 0.95s
+- COD: 現在 6.08s / Elite目標 6.10s / 超過 0.02s
+- RSI: 現在 2.19 / Elite目標 1.70 / 超過 0.49
+- CMJ: 現在 15.40cm / Elite目標 36.00cm / 差 20.60cm
+- MBT 2kg: 現在 3.00m / Elite目標 4.60m / 差 1.60m
+
+## 今日の優先課題
+
+- 優先①：**加速力**
+- 優先②：**爆発力**
 
 ## ラグビー総合フィジカルスコア
 
-- スコア: **51.13**
+- スコア: **53.31**
 - 評価帯: **基礎段階**
 - 最強ドメイン: **反応ストレングス**
 - 最弱ドメイン: **加速力**
@@ -31,22 +36,25 @@
 
 ## 能力ドメインスコア
 
-| 選手 | 測定日 | 加速力スコア | 方向転換力スコア | 反応ストレングススコア | 爆発力スコア | 上半身パワースコア |
-|---|---|---|---|---|---|---|
-| togo | 2026-04-16 | 17.20 | 74.54 | 89.75 | 35.87 | 40.00 |
+| 選手 | セッションID | 加速力スコア | 方向転換力スコア | 反応ストレングススコア | 爆発力スコア | 上半身パワースコア | 持久力スコア |
+|---|---|---|---|---|---|---|---|
+| togo | 2026-04_test1 | 17.20 | 74.54 | 89.75 | 35.87 | 40.00 | 67.91 |
 
 
 ## テストスコア
 
-| 選手 | 測定日 | テスト | 実測値 | 単位 | スコア | 評価帯 | ドメイン | 次レベルとの差 |
-|---|---|---|---|---|---|---|---|---|
-| togo | 2026-04-16 | 10m_sprint | 2.55 | s | 0.00 | 初期段階 | 加速力 | 0.90 |
-| togo | 2026-04-16 | 20m_sprint | 4.27 | s | 43.00 | 初期段階 | 加速力 | 0.67 |
-| togo | 2026-04-16 | pro_agility_5_10_5 | 6.08 | s | 74.54 | 上級 | 方向転換力 | 0.78 |
-| togo | 2026-04-16 | cmj | 15.40 | cm | 14.00 | 初期段階 | 爆発力 | 12.60 |
-| togo | 2026-04-16 | rsi | 2.19 | ratio | 89.75 | 競技レベル | 反応ストレングス | 0.41 |
-| togo | 2026-04-16 | standing_long_jump | 1.98 | m | 68.67 | 発展中 | 爆発力 | 0.02 |
-| togo | 2026-04-16 | medicine_ball_throw_2kg | 3.00 | m | 40.00 | 初期段階 | 上半身パワー | 0.50 |
+| 選手 | テスト | 実測値 | 単位 | スコア | 評価帯 | ドメイン | 次レベルとの差 |
+|---|---|---|---|---|---|---|---|
+| togo | 10m_sprint | 2.55 | s | 0.00 | 初期段階 | 加速力 | 0.90 |
+| togo | 20m_sprint | 4.27 | s | 43.00 | 初期段階 | 加速力 | 0.67 |
+| togo | pro_agility_5_10_5 | 6.08 | s | 74.54 | 上級 | 方向転換力 | 0.78 |
+| togo | cmj | 15.40 | cm | 14.00 | 初期段階 | 爆発力 | 12.60 |
+| togo | rsi | 2.19 | ratio | 89.75 | 競技レベル | 反応ストレングス | 0.41 |
+| togo | standing_long_jump | 1.98 | m | 68.67 | 発展中 | 爆発力 | 0.02 |
+| togo | medicine_ball_throw_2kg | 3.00 | m | 40.00 | 初期段階 | 上半身パワー | 0.50 |
+| togo | yoyo_ir1 | 820.00 | m | 42.80 | 初期段階 | 持久力 | 180.00 |
+| togo | rsa_avg_time | 4.39 | s | 88.35 | 競技レベル | 持久力 | 0.39 |
+| togo | rsa_decline | 0.05 | ratio | 100.00 | エリート | 持久力 | 0.00 |
 
 
 ## スプリントセッション
@@ -89,29 +97,29 @@
 
 | 選手 | テスト種別 | 指標名 | ベスト値 | 単位 | 日付 | セッションID | 左右 |
 |---|---|---|---|---|---|---|---|
-| togo | CMJ | best_jump_height_cm | 32.70 | cm | 2026-03-08 | 2026-03-08_test1 | - |
-| togo | DJ | best_contact_time_ms | 130.00 | ms | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | DJ | best_flight_time_ms | 359.00 | ms | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | DJ | best_jump_height_cm | 15.80 | cm | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | DJ | best_rsi | 2.19 | - | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | SJ | best_jump_height_cm | 23.00 | cm | 2026-03-08 | 2026-03-08_test1 | - |
-| togo | bounding_10 | best_distance_cm | 1760.00 | cm | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | hop_5 | best_distance_cm | 710.00 | cm | 2026-04-16 | 2026-04-16_test1 | left |
-| togo | hop_5 | best_distance_cm | 773.00 | cm | 2026-04-16 | 2026-04-16_test1 | right |
-| togo | medicine_ball_throw_2kg | best_distance_m | 3.00 | m | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | pro_agility | best_segment_1_s | 1.97 | s | 2026-04-16 | 2026-04-16_test1 | left |
-| togo | pro_agility | best_segment_1_s | 1.97 | s | 2026-04-16 | 2026-04-16_test1 | right |
-| togo | pro_agility | best_segment_2_s | 2.13 | s | 2026-04-16 | 2026-04-16_test1 | left |
-| togo | pro_agility | best_segment_2_s | 2.99 | s | 2026-04-16 | 2026-04-16_test1 | right |
-| togo | pro_agility | best_segment_3_s | 1.98 | s | 2026-04-16 | 2026-04-16_test1 | left |
-| togo | pro_agility | best_segment_3_s | 1.98 | s | 2026-04-16 | 2026-04-16_test1 | right |
-| togo | pro_agility | best_total_time_s | 6.08 | s | 2026-04-16 | 2026-04-16_test1 | left |
-| togo | pro_agility | best_total_time_s | 6.31 | s | 2026-03-08 | 2026-03-08_test1 | right |
-| togo | sprint_30m | best_fly_10m_s | 0.85 | s | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | sprint_30m | best_fly_5m_s | 0.82 | s | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | sprint_30m | best_split_10m_s | 1.62 | s | 2026-03-08 | 2026-03-08_test1 | - |
-| togo | sprint_30m | best_split_20m_s | 3.45 | s | 2026-03-08 | 2026-03-08_test1 | - |
-| togo | sprint_30m | best_split_30m_s | 5.39 | s | 2026-03-08 | 2026-03-08_test1 | - |
-| togo | sprint_30m | best_split_5m_s | 1.58 | s | 2026-04-16 | 2026-04-16_test1 | - |
-| togo | sprint_30m | best_total_time_s | 5.39 | s | 2026-03-08 | 2026-03-08_test1 | - |
-| togo | standing_long_jump | best_distance_cm | 198.00 | cm | 2026-04-16 | 2026-04-16_test1 | - |
+| togo | CMJ | best_jump_height_cm | 32.70 | cm | 2026-03-08 | 2026-03_test1 | - |
+| togo | DJ | best_contact_time_ms | 130.00 | ms | 2026-04-16 | 2026-04_test1 | - |
+| togo | DJ | best_flight_time_ms | 359.00 | ms | 2026-04-16 | 2026-04_test1 | - |
+| togo | DJ | best_jump_height_cm | 15.80 | cm | 2026-04-16 | 2026-04_test1 | - |
+| togo | DJ | best_rsi | 2.19 | - | 2026-04-16 | 2026-04_test1 | - |
+| togo | SJ | best_jump_height_cm | 23.00 | cm | 2026-03-08 | 2026-03_test1 | - |
+| togo | bounding_10 | best_distance_cm | 1760.00 | cm | 2026-04-16 | 2026-04_test1 | - |
+| togo | hop_5 | best_distance_cm | 710.00 | cm | 2026-04-16 | 2026-04_test1 | left |
+| togo | hop_5 | best_distance_cm | 773.00 | cm | 2026-04-16 | 2026-04_test1 | right |
+| togo | medicine_ball_throw_2kg | best_distance_m | 3.00 | m | 2026-04-16 | 2026-04_test1 | - |
+| togo | pro_agility | best_segment_1_s | 1.97 | s | 2026-04-16 | 2026-04_test1 | left |
+| togo | pro_agility | best_segment_1_s | 1.97 | s | 2026-04-16 | 2026-04_test1 | right |
+| togo | pro_agility | best_segment_2_s | 2.13 | s | 2026-04-16 | 2026-04_test1 | left |
+| togo | pro_agility | best_segment_2_s | 2.99 | s | 2026-04-16 | 2026-04_test1 | right |
+| togo | pro_agility | best_segment_3_s | 1.98 | s | 2026-04-16 | 2026-04_test1 | left |
+| togo | pro_agility | best_segment_3_s | 1.98 | s | 2026-04-16 | 2026-04_test1 | right |
+| togo | pro_agility | best_total_time_s | 6.08 | s | 2026-04-16 | 2026-04_test1 | left |
+| togo | pro_agility | best_total_time_s | 6.31 | s | 2026-03-08 | 2026-03_test1 | right |
+| togo | sprint_30m | best_fly_10m_s | 0.85 | s | 2026-04-16 | 2026-04_test1 | - |
+| togo | sprint_30m | best_fly_5m_s | 0.82 | s | 2026-04-16 | 2026-04_test1 | - |
+| togo | sprint_30m | best_split_10m_s | 1.62 | s | 2026-03-08 | 2026-03_test1 | - |
+| togo | sprint_30m | best_split_20m_s | 3.45 | s | 2026-03-08 | 2026-03_test1 | - |
+| togo | sprint_30m | best_split_30m_s | 5.39 | s | 2026-03-08 | 2026-03_test1 | - |
+| togo | sprint_30m | best_split_5m_s | 1.58 | s | 2026-04-16 | 2026-04_test1 | - |
+| togo | sprint_30m | best_total_time_s | 5.39 | s | 2026-03-08 | 2026-03_test1 | - |
+| togo | standing_long_jump | best_distance_cm | 198.00 | cm | 2026-04-16 | 2026-04_test1 | - |

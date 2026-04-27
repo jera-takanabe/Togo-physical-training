@@ -1,15 +1,21 @@
-athlete,session_date,test,raw_value,unit,score,score_band,domain,gap_to_next_level
-togo,2026-03-08,10m_sprint,1.62,s,100.0,Elite,acceleration,0.0
-togo,2026-03-08,20m_sprint,3.45,s,100.0,Elite,acceleration,0.0
-togo,2026-04-16,10m_sprint,2.55,s,0.0,Early Stage,acceleration,0.9
-togo,2026-04-16,20m_sprint,4.27,s,43.0,Early Stage,acceleration,0.67
-togo,2026-03-08,pro_agility_5_10_5,6.31,s,64.5,Developing,cod,1.01
-togo,2026-04-16,pro_agility_5_10_5,6.079,s,74.54,Advanced,cod,0.779
-togo,2026-03-08,cmj,32.7,cm,63.43,Developing,explosive_power,2.3
-togo,2026-03-08,rsi,1.72,ratio,74.5,Advanced,reactive_strength,0.28
-togo,2026-04-16,cmj,15.4,cm,14.0,Early Stage,explosive_power,12.6
-togo,2026-04-16,rsi,2.19,ratio,89.75,Competitive,reactive_strength,0.41
-togo,2026-03-08,standing_long_jump,1.72,m,51.33,Foundation,explosive_power,0.28
-togo,2026-04-16,standing_long_jump,1.98,m,68.67,Developing,explosive_power,0.02
-togo,2026-03-20,medicine_ball_throw_2kg,2.8,m,36.0,Early Stage,upper_body_power,0.7
-togo,2026-04-16,medicine_ball_throw_2kg,3.0,m,40.0,Early Stage,upper_body_power,0.5
+athlete,session_id,test,raw_value,unit,score,score_band,domain,gap_to_next_level
+togo,2026-03_test1,10m_sprint,1.62,s,100.0,Elite,acceleration,0.0
+togo,2026-03_test1,20m_sprint,3.45,s,100.0,Elite,acceleration,0.0
+togo,2026-04_test1,10m_sprint,2.55,s,0.0,Early Stage,acceleration,0.9
+togo,2026-04_test1,20m_sprint,4.27,s,43.0,Early Stage,acceleration,0.67
+togo,2026-03_test1,pro_agility_5_10_5,6.31,s,64.5,Developing,cod,1.01
+togo,2026-04_test1,pro_agility_5_10_5,6.079,s,74.54,Advanced,cod,0.779
+togo,2026-03_test1,cmj,32.7,cm,63.43,Developing,explosive_power,2.3
+togo,2026-03_test1,rsi,1.72,ratio,74.5,Advanced,reactive_strength,0.28
+togo,2026-04_test1,cmj,15.4,cm,14.0,Early Stage,explosive_power,12.6
+togo,2026-04_test1,rsi,2.19,ratio,89.75,Competitive,reactive_strength,0.41
+togo,2026-03_test1,standing_long_jump,1.72,m,51.33,Foundation,explosive_power,0.28
+togo,2026-04_test1,standing_long_jump,1.98,m,68.67,Developing,explosive_power,0.02
+togo,2026-03_test1,medicine_ball_throw_2kg,2.8,m,36.0,Early Stage,upper_body_power,0.7
+togo,2026-04_test1,medicine_ball_throw_2kg,3.0,m,40.0,Early Stage,upper_body_power,0.5
+togo,2026-03_test1,yoyo_ir1,280.0,m,21.2,Early Stage,endurance,720.0
+togo,2026-04_test1,yoyo_ir1,820.0,m,42.8,Early Stage,endurance,180.0
+togo,2026-03_test1,rsa_avg_time,4.05,s,98.5,Elite,endurance,0.05
+togo,2026-03_test1,rsa_decline,0.1891891891891892,ratio,34.32,Early Stage,endurance,0.1392
+togo,2026-04_test1,rsa_avg_time,4.388333333333333,s,88.35,Competitive,endurance,0.3883
+togo,2026-04_test1,rsa_decline,0.0467289719626168,ratio,100.0,Elite,endurance,0.0

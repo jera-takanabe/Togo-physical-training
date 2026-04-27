@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROCESSED = ROOT / "data" / "processed"
 REFERENCE = ROOT / "data" / "reference"
 ANALYSIS = ROOT / "data" / "analysis"
+RAW = ROOT / "data" / "raw"
 
 BENCHMARK_PATH = REFERENCE / "benchmark_values.csv"
 
@@ -36,6 +37,10 @@ TEST_CONFIG = {
     "standing_long_jump": {"direction": "higher", "domain": "explosive_power"},
     "rsi": {"direction": "higher", "domain": "reactive_strength"},
     "medicine_ball_throw_2kg": {"direction": "higher", "domain": "upper_body_power"},
+
+    "yoyo_ir1": {"direction": "higher", "domain": "endurance"},
+    "rsa_avg_time": {"direction": "lower", "domain": "endurance"},
+    "rsa_decline": {"direction": "lower", "domain": "endurance"},
 }
 
 DOMAIN_WEIGHTS = {
@@ -44,6 +49,8 @@ DOMAIN_WEIGHTS = {
     "reactive_strength": 0.20,
     "explosive_power": 0.15,
     "upper_body_power": 0.10,
+
+    "endurance": 0.15,
 }
 
 PRIORITY_BONUS = {
@@ -166,11 +173,11 @@ def extract_test_results_from_processed() -> pd.DataFrame:
     if not sprint.empty:
         for _, r in sprint.iterrows():
             athlete = r["athlete"]
-            session_date = r["date"]
+            session_id = r["session_id"]
             if pd.notna(r.get("best_split_10m_s")):
                 rows.append({
                     "athlete": athlete,
-                    "session_date": session_date,
+                    "session_id": session_id,
                     "test": "10m_sprint",
                     "raw_value": float(r["best_split_10m_s"]),
                     "unit": "s",
@@ -178,7 +185,7 @@ def extract_test_results_from_processed() -> pd.DataFrame:
             if pd.notna(r.get("best_split_20m_s")):
                 rows.append({
                     "athlete": athlete,
-                    "session_date": session_date,
+                    "session_id": session_id,
                     "test": "20m_sprint",
                     "raw_value": float(r["best_split_20m_s"]),
                     "unit": "s",
@@ -194,7 +201,7 @@ def extract_test_results_from_processed() -> pd.DataFrame:
             for _, r in cod.loc[idx].iterrows():
                 rows.append({
                     "athlete": r["athlete"],
-                    "session_date": r["date"],
+                    "session_id": r["session_id"],
                     "test": "pro_agility_5_10_5",
                     "raw_value": float(r["best_total_time_s"]),
                     "unit": "s",
@@ -205,12 +212,12 @@ def extract_test_results_from_processed() -> pd.DataFrame:
         for _, r in jump.iterrows():
             test_type = str(r["test_type"]).upper()
             athlete = r["athlete"]
-            session_date = r["date"]
+            session_id = r["session_id"]
 
             if test_type == "CMJ" and pd.notna(r.get("best_jump_height_cm")):
                 rows.append({
                     "athlete": athlete,
-                    "session_date": session_date,
+                    "session_id": session_id,
                     "test": "cmj",
                     "raw_value": float(r["best_jump_height_cm"]),
                     "unit": "cm",
@@ -219,7 +226,7 @@ def extract_test_results_from_processed() -> pd.DataFrame:
             if test_type == "DJ" and pd.notna(r.get("best_rsi")):
                 rows.append({
                     "athlete": athlete,
-                    "session_date": session_date,
+                    "session_id": session_id,
                     "test": "rsi",
                     "raw_value": float(r["best_rsi"]),
                     "unit": "ratio",
@@ -232,7 +239,7 @@ def extract_test_results_from_processed() -> pd.DataFrame:
             if pd.notna(r.get("best_distance_cm")):
                 rows.append({
                     "athlete": r["athlete"],
-                    "session_date": r["date"],
+                    "session_id": r["session_id"],
                     "test": "standing_long_jump",
                     "raw_value": round(float(r["best_distance_cm"]) / 100.0, 4),
                     "unit": "m",
@@ -245,10 +252,45 @@ def extract_test_results_from_processed() -> pd.DataFrame:
             if pd.notna(r.get("best_distance_m")):
                 rows.append({
                     "athlete": r["athlete"],
-                    "session_date": r["date"],
+                    "session_id": r["session_id"],
                     "test": "medicine_ball_throw_2kg",
                     "raw_value": float(r["best_distance_m"]),
                     "unit": "m",
+                })
+
+    # Yo-Yo
+    yoyo = _safe_read_csv(PROCESSED / "yoyo_sessions.csv")
+    if not yoyo.empty:
+        for _, r in yoyo.iterrows():
+            if pd.notna(r.get("best_distance_m")):
+                rows.append({
+                    "athlete": r["athlete"],
+                    "session_id": r["session_id"],
+                    "test": "yoyo_ir1",
+                    "raw_value": float(r["best_distance_m"]),
+                    "unit": "m",
+                })
+
+    # RSA
+    rsa = _safe_read_csv(PROCESSED / "rsa_sessions.csv")
+    if not rsa.empty:
+        for _, r in rsa.iterrows():
+            if pd.notna(r.get("avg_time")):
+                rows.append({
+                    "athlete": r["athlete"],
+                    "session_id": r["session_id"],
+                    "test": "rsa_avg_time",
+                    "raw_value": float(r["avg_time"]),
+                    "unit": "s",
+                })
+
+            if pd.notna(r.get("decline_ratio")):
+                rows.append({
+                    "athlete": r["athlete"],
+                    "session_id": r["session_id"],
+                    "test": "rsa_decline",
+                    "raw_value": float(r["decline_ratio"]),
+                    "unit": "ratio",
                 })
 
     return pd.DataFrame(rows)
@@ -277,7 +319,7 @@ def calculate_test_scores(test_results: pd.DataFrame, benchmarks: pd.DataFrame) 
 
         out_rows.append({
             "athlete": row["athlete"],
-            "session_date": row["session_date"],
+            "session_id": row["session_id"],
             "test": test,
             "raw_value": row["raw_value"],
             "unit": row["unit"],
@@ -292,7 +334,7 @@ def calculate_test_scores(test_results: pd.DataFrame, benchmarks: pd.DataFrame) 
 
 def calculate_domain_scores(test_scores: pd.DataFrame) -> pd.DataFrame:
     rows = []
-    for (athlete, session_date), group in test_scores.groupby(["athlete", "session_date"]):
+    for (athlete, session_id), group in test_scores.groupby(["athlete", "session_id"]):
         score_map = {r["test"]: float(r["score"]) for _, r in group.iterrows()}
 
         acceleration = score_map.get("10m_sprint", 0.0) * 0.6 + score_map.get("20m_sprint", 0.0) * 0.4
@@ -301,14 +343,30 @@ def calculate_domain_scores(test_scores: pd.DataFrame) -> pd.DataFrame:
         reactive = score_map.get("rsi", 0.0)
         upper = score_map.get("medicine_ball_throw_2kg")
 
+        yoyo = score_map.get("yoyo_ir1")
+        rsa_avg = score_map.get("rsa_avg_time")
+        rsa_decline = score_map.get("rsa_decline")
+
+        endurance_parts = []
+        if yoyo is not None:
+            endurance_parts.append(yoyo * 0.5)
+        if rsa_avg is not None:
+            endurance_parts.append(rsa_avg * 0.3)
+        if rsa_decline is not None:
+            endurance_parts.append(rsa_decline * 0.2)
+
+        endurance = sum(endurance_parts) if endurance_parts else None
+
         rows.append({
             "athlete": athlete,
-            "session_date": session_date,
+            "session_id": session_id,
             "acceleration_score": round(acceleration, 2),
             "cod_score": round(cod, 2),
             "reactive_strength_score": round(reactive, 2),
             "explosive_power_score": round(explosive, 2),
             "upper_body_power_score": round(upper, 2) if upper is not None else None,
+
+            "endurance_score": round(endurance, 2) if endurance is not None else None,
         })
 
     return pd.DataFrame(rows)
@@ -323,6 +381,8 @@ def calculate_rugby_physical_score(domain_scores: pd.DataFrame) -> pd.DataFrame:
             "reactive_strength": row["reactive_strength_score"],
             "explosive_power": row["explosive_power_score"],
             "upper_body_power": row["upper_body_power_score"],
+
+            "endurance": row.get("endurance_score"),
         }
 
         available_domains = {
@@ -359,7 +419,7 @@ def calculate_rugby_physical_score(domain_scores: pd.DataFrame) -> pd.DataFrame:
 
         rows.append({
             "athlete": row["athlete"],
-            "session_date": row["session_date"],
+            "session_id": row["session_id"],
             "rugby_physical_score": round(total, 2),
             "score_band": score_band(total),
             "strongest_domain": strongest,

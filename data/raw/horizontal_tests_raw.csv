@@ -1,24 +1,24 @@
 session_id,date,athlete,test_type,trial,side,valid,device,video_file,fps,distance_cm,surface,shoes,sleep_hours,fatigue,pain,memo
-2026-03-08_test1,2026-03-08,togo,standing_long_jump,1,,true,Kinovea,slj_001.MOV,240,172,アスファルト,スニーカー,9.0,2,0,good
-2026-03-08_test1,2026-03-08,togo,standing_long_jump,2,,true,Kinovea,slj_002.MOV,240,162,アスファルト,スニーカー,9.0,2,0,good
-2026-03-08_test1,2026-03-08,togo,standing_long_jump,3,,true,Kinovea,slj_003.MOV,240,170,アスファルト,スニーカー,9.0,2,0,good
+2026-03_test1,2026-03-08,togo,standing_long_jump,1,,true,Kinovea,slj_001.MOV,240,172,アスファルト,スニーカー,9.0,2,0,good
+2026-03_test1,2026-03-08,togo,standing_long_jump,2,,true,Kinovea,slj_002.MOV,240,162,アスファルト,スニーカー,9.0,2,0,good
+2026-03_test1,2026-03-08,togo,standing_long_jump,3,,true,Kinovea,slj_003.MOV,240,170,アスファルト,スニーカー,9.0,2,0,good
 
-2026-03-08_test1,2026-03-08,togo,bounding_10,1,,true,Kinovea,bounding_001.MOV,240,1522,アスファルト,スニーカー,9.0,2,0,
-2026-03-08_test1,2026-03-08,togo,bounding_10,2,,true,Kinovea,bounding_002.MOV,240,1595,アスファルト,スニーカー,9.0,2,0,
+2026-03_test1,2026-03-08,togo,bounding_10,1,,true,Kinovea,bounding_001.MOV,240,1522,アスファルト,スニーカー,9.0,2,0,
+2026-03_test1,2026-03-08,togo,bounding_10,2,,true,Kinovea,bounding_002.MOV,240,1595,アスファルト,スニーカー,9.0,2,0,
 
-2026-03-08_test1,2026-03-08,togo,hop_5,1,left,true,Kinovea,5hop-right_001.MOV,240,702,アスファルト,スニーカー,9.0,2,0,
-2026-03-08_test1,2026-03-08,togo,hop_5,2,left,true,Kinovea,5hop-left_001.MOV,240,589,アスファルト,スニーカー,9.0,2,0,
-2026-03-08_test1,2026-03-08,togo,hop_5,1,right,true,Kinovea,5hop-right_002.MOV,240,695,アスファルト,スニーカー,9.0,2,0,
-2026-03-08_test1,2026-03-08,togo,hop_5,2,right,true,Kinovea,5hop-left_002.MOV,240,611,アスファルト,スニーカー,9.0,2,0,
+2026-03_test1,2026-03-08,togo,hop_5,1,left,true,Kinovea,5hop-right_001.MOV,240,702,アスファルト,スニーカー,9.0,2,0,
+2026-03_test1,2026-03-08,togo,hop_5,2,left,true,Kinovea,5hop-left_001.MOV,240,589,アスファルト,スニーカー,9.0,2,0,
+2026-03_test1,2026-03-08,togo,hop_5,1,right,true,Kinovea,5hop-right_002.MOV,240,695,アスファルト,スニーカー,9.0,2,0,
+2026-03_test1,2026-03-08,togo,hop_5,2,right,true,Kinovea,5hop-left_002.MOV,240,611,アスファルト,スニーカー,9.0,2,0,
 
-2026-04-16_test1,2026-04-16,togo,standing_long_jump,1,,true,Kinovea,,,185,河川敷,トレシュー,8.0,3,0,
-2026-04-16_test1,2026-04-16,togo,standing_long_jump,2,,true,Kinovea,,,189,河川敷,トレシュー,8.0,3,0,
-2026-04-16_test1,2026-04-16,togo,standing_long_jump,3,,true,Kinovea,,,198,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,standing_long_jump,1,,true,Kinovea,,,185,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,standing_long_jump,2,,true,Kinovea,,,189,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,standing_long_jump,3,,true,Kinovea,,,198,河川敷,トレシュー,8.0,3,0,
 
-2026-04-16_test1,2026-04-16,togo,bounding_10,1,,true,Kinovea,,,1756,河川敷,トレシュー,8.0,3,0,
-2026-04-16_test1,2026-04-16,togo,bounding_10,2,,true,Kinovea,,,1760,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,bounding_10,1,,true,Kinovea,,,1756,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,bounding_10,2,,true,Kinovea,,,1760,河川敷,トレシュー,8.0,3,0,
 
-2026-04-16_test1,2026-04-16,togo,hop_5,1,left,true,Kinovea,,,688,河川敷,トレシュー,8.0,3,0,
-2026-04-16_test1,2026-04-16,togo,hop_5,2,left,true,Kinovea,,,710,河川敷,トレシュー,8.0,3,0,
-2026-04-16_test1,2026-04-16,togo,hop_5,1,right,true,Kinovea,,,773,河川敷,トレシュー,8.0,3,0,
-2026-04-16_test1,2026-04-16,togo,hop_5,2,right,true,Kinovea,,,745,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,hop_5,1,left,true,Kinovea,,,688,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,hop_5,2,left,true,Kinovea,,,710,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,hop_5,1,right,true,Kinovea,,,773,河川敷,トレシュー,8.0,3,0,
+2026-04_test1,2026-04-16,togo,hop_5,2,right,true,Kinovea,,,745,河川敷,トレシュー,8.0,3,0,
