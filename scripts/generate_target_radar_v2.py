@@ -34,10 +34,11 @@ OUTPUT_GAP = OUTPUT_DIR / "target_gap_summary.md"
 
 AXES = [
     ("10m_s", "10m_sprint", "acceleration", "lower", None),
-    ("COD_s", "pro_agility_5_10_5", "cod", "lower", None),
-    ("RSI", "rsi", "reactive_strength", "higher", None),
     ("CMJ_cm", "cmj", "explosive_power", "higher", None),
+    ("RSI", "rsi", "reactive_strength", "higher", None),
+    ("COD_s", "pro_agility_5_10_5", "cod", "lower", None),
     ("MBT_m", "medicine_ball_throw_2kg", "upper_body_power", "higher", None),
+    ("YoYo_m", "yoyo_ir1", "endurance", "higher", None),
 ]
 
 RAW_LABELS = {
@@ -46,6 +47,7 @@ RAW_LABELS = {
     "rsi": ("RSI", ""),
     "cmj": ("CMJ", "cm"),
     "medicine_ball_throw_2kg": ("MBT 2kg", "m"),
+    "yoyo_ir1": ("Yo-Yo IR1", "m"),
 }
 
 for font_name in ["Noto Sans JP", "Yu Gothic", "Meiryo", "MS Gothic"]:
