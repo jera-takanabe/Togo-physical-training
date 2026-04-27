@@ -26,10 +26,11 @@ OUTPUT_PATH = OUTPUT_DIR / "radar_chart.png"
 
 DOMAIN_COLUMNS = [
     ("acceleration_score", "acceleration"),
-    ("cod_score", "cod"),
-    ("reactive_strength_score", "reactive_strength"),
     ("explosive_power_score", "explosive_power"),
+    ("reactive_strength_score", "reactive_strength"),
+    ("cod_score", "cod"),
     ("upper_body_power_score", "upper_body_power"),
+    ("endurance_score", "endurance"),
 ]
 
 
