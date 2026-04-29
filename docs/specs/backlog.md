@@ -164,7 +164,7 @@ Status: Done
 - 実データ・スクリプト側の整合性確認は、2.2 / 2.4 で扱う
 
 ### 2.2 各テスト項目とドメイン対応の妥当性確認
-Status: Next
+Status: Done
 
 目的:
 - 各測定項目が、どのドメインに紐づくべきかを見直す
@@ -173,16 +173,36 @@ Status: Next
 成果物:
 - `docs/specs/analysis_validity_review.md`
 
-作業予定メモ:
-- 2.1 で見つかった旧ドメイン名と現行6軸の不整合を引き継ぐ
-- 各テスト項目について、以下の対応を確認する
-  - test
-  - current domain
-  - subdomain
-  - axis
-  - representative metric として妥当か
-- `test_scores.csv` の `domain` 列が、axis なのか subdomain なのかを明確化する
-- `domain_scores.csv` を将来的に `subdomain_scores` と `axis_scores` に分けるか検討する
+作業メモ:
+- `data/analysis/test_scores.csv` に出ている現在の test → domain 対応を確認した
+- 現在の対応は以下
+  - `10m_sprint` → `acceleration`
+  - `20m_sprint` → `acceleration`
+  - `cmj` → `explosive_power`
+  - `standing_long_jump` → `explosive_power`
+  - `rsi` → `reactive_strength`
+  - `pro_agility_5_10_5` → `cod`
+  - `medicine_ball_throw_2kg` → `upper_body_power`
+  - `yoyo_ir1` → `endurance`
+  - `rsa_avg_time` → `endurance`
+  - `rsa_decline` → `endurance`
+- 現行6軸への対応は大きく破綻していない
+- 問題は、割り当てそのものよりも、旧domain名と現行axis/subdomain名の不一致である
+- `test_scores.csv` の `domain` 列は、現行設計では `axis` ではなく `subdomain` に近い
+- `analysis_validity_review.md` に、test → current domain → subdomain → axis の対応表を追加した
+- 複数能力を含むテストについて、現段階では1つのテストを複数axisへ配点せず、主axisを1つに決めて扱う方針とした
+- 理由:
+  - システムが複雑になりすぎることを避ける
+  - スコアの説明可能性を保つ
+  - 測定数が少ない段階では、細かい配点よりも継続測定と傾向把握を優先する
+  - 1つのテストを複数axisに配点すると、総合スコアで二重計上になる可能性がある
+
+次工程へ送る課題:
+- スコア算出ロジックへの反映は 2.4 で扱う
+- `test_scores.csv` の `domain` 列を `subdomain` として扱うか検討する
+- 現行6軸に対応する `axis` 列を追加するか検討する
+- `domain_scores.csv` を `subdomain_scores.csv` と `axis_scores.csv` に分けるか検討する
+- 複数能力を含むテストの扱いを、今後スコア算出ロジックへ反映するか検討する
 
 ### 2.3 レーダーチャート不整合の修正
 
