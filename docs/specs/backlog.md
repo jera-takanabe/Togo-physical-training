@@ -227,7 +227,7 @@ Status: Done
 - 今後の課題は「軸の妥当性」「スコア算出根拠」「ベンチマーク根拠」の検証に移す
 
 ### 2.4 スコア算出根拠の明確化
-Status: Next
+Status: Blocked
 
 目的:
 - raw値から radar_score / domain_score / rugby_physical_score に変換される根拠を明確にする
@@ -247,8 +247,17 @@ Status: Next
 - 補間計算の妥当性
 - ベンチマークが不足している項目の扱い
 
+作業メモ:
+- スコア計算ロジックは `interpolate_score()` により説明可能
+- ただし、計算の前提となる `benchmark_values.csv` の基準値の妥当性が未確認
+- benchmark値の出典・測定条件・信頼度が不明なままでは、スコアの妥当性は確定できない
+- そのため、2.4 の途中で 2.5「ベンチマーク値・引用根拠の整理」を先に確認する
+
+Blocked reason:
+- `benchmark_values.csv` の出典・測定条件・信頼度が未確認のため
+
 ### 2.5 ベンチマーク値・引用根拠の整理
-Status: Next
+Status: In Progress
 
 目的:
 - benchmark_values.csv に入っている値の根拠を明確化する
@@ -269,6 +278,86 @@ Status: Next
 - 測定条件
 - このプロジェクトで採用した理由
 - 信頼度
+
+作業メモ:
+- 2.4「スコア算出根拠の明確化」を進める前提として、`benchmark_values.csv` の基準値の根拠確認を先に行う
+- 現時点では、各benchmark値が以下のどれに該当するか未整理
+  - 1次ソース由来
+  - 2次資料由来
+  - 推定値
+  - 仮置き
+  - プロジェクト内での暫定値
+- benchmark値の出典・測定条件・信頼度を整理しない限り、スコアの妥当性は確定できない
+
+確認メモ:
+- `data/reference/benchmark_values.csv` には10個のbenchmark項目がある
+  - `10m_sprint`
+  - `20m_sprint`
+  - `cmj`
+  - `standing_long_jump`
+  - `pro_agility_5_10_5`
+  - `rsi`
+  - `medicine_ball_throw_2kg`
+  - `yoyo_ir1`
+  - `rsa_avg_time`
+  - `rsa_decline`
+- 現在の列は以下のみ
+  - `test`
+  - `unit`
+  - `general_youth_p50`
+  - `youth_athlete_p50`
+  - `elite_u18_p50`
+  - `world_elite_p50`
+- 現在の `benchmark_values.csv` には、出典・測定条件・信頼度を示す列がない
+- `docs/references/rugby_benchmark_dataset_documentation.md` には、複数のスポーツ科学資料を合成したbenchmarkである旨が書かれている
+- ただし、具体的な論文名・著者・年・URL・DOI・対象年齢・測定条件は記録されていない
+- 現時点では、benchmark値は「一次ソースに紐づいた確定値」ではなく、「複数資料をもとにした暫定的な合成・推定benchmark」として扱う
+- したがって、現在のスコアは厳密な標準化スコアではなく、育成・比較・モチベーション用の暫定スコアとして扱う
+
+追加検討する列:
+- `source_type`
+- `source_note`
+- `age_range`
+- `sex`
+- `sport_context`
+- `measurement_protocol`
+- `confidence`
+- `review_status`
+- `primary_source`
+- `secondary_source`
+- `source_url_or_doi`
+
+拡張方針:
+- `benchmark_values.csv` に出典情報をすべて詰め込むのではなく、計算に必要な値と最低限の根拠メタ情報を持たせる
+- 詳細な出典・レビュー内容は、別ドキュメントで管理する
+- 候補ドキュメント:
+  - `docs/references/benchmark_source_review.md`
+
+`benchmark_values.csv` に追加する最小候補列:
+- `source_type`
+- `source_note`
+- `confidence`
+- `review_status`
+- `review_note`
+
+現時点の暫定扱い:
+- 全benchmark値は、一次ソース確認が完了するまでは以下として扱う
+  - `source_type`: `synthesized_estimate`
+  - `confidence`: `low`
+  - `review_status`: `needs_review`
+- 理由:
+  - 具体的な一次ソースが未記録
+  - 対象年齢・性別・競技・測定条件が未整理
+  - 現在の値は厳密な標準化値ではなく、育成・比較・モチベーション用の暫定値であるため
+
+成果物:
+- `docs/references/benchmark_source_review.md`
+
+追加作業メモ:
+- `docs/references/benchmark_source_review.md` を作成した
+- 現在の benchmark 値は全て `needs_review` として扱う
+- 現時点では、全 benchmark 値の `confidence` は `low` とする
+- 今後、test ごとに一次ソース候補を確認し、必要に応じて benchmark 値を修正する
 
 ---
 
