@@ -352,12 +352,31 @@ Status: In Progress
 
 成果物:
 - `docs/references/benchmark_source_review.md`
+- `docs/references/benchmark_design_policy.md`
 
 追加作業メモ:
 - `docs/references/benchmark_source_review.md` を作成した
 - 現在の benchmark 値は全て `needs_review` として扱う
 - 現時点では、全 benchmark 値の `confidence` は `low` とする
 - 今後、test ごとに一次ソース候補を確認し、必要に応じて benchmark 値を修正する
+
+方針変更メモ:
+- benchmark値は後続の弱点判定・優先順位・トレーニングメニュー設計に大きく影響するため、単なる出典確認ではなく、benchmark設計そのものを早期に見直す
+- 10m_sprint などの基礎フィジカル指標は、最初からラグビー専用benchmarkに限定しない
+- benchmark はまず、年齢・発達段階・性別・競技経験レベルに基づく基礎フィジカル基準として整理する
+- ラグビー文脈は benchmark値そのものではなく、上位レイヤーの重要度・優先順位・トレーニング判断で扱う
+- 将来的には `U12 / U14 / U16 / U18 / 18+` の stage 別 benchmark を検討する
+- 可能であれば `p50 / p75 / p90 / p95 / elite_reference` のような percentile 設計を検討する
+- 現在の `general_youth_p50 / youth_athlete_p50 / elite_u18_p50 / world_elite_p50` は暫定構造として扱い、stage × percentile 型へ再設計する可能性がある
+- この方針はトレーニングメニュー設計にも影響するため、個別benchmark値の出典確認より先に設計方針を明文化する
+- `docs/references/benchmark_design_policy.md` を作成した
+- benchmark は、まず基礎フィジカルの年齢・発達段階別比較として設計する方針とした
+- ラグビー重要度は、benchmark値ではなく上位レイヤーで扱う方針とした
+- `U12 / U14 / U16 / U18 / 18+` の stage 別 benchmark を検討する
+- `p50 / p75 / p90 / p95 / elite_reference` を区別する
+- 現行 `benchmark_values.csv` は暫定互換ファイルとして維持する
+- 新しい stage × percentile benchmark は、別ファイルで試作する
+- 最初の試作対象は `10m_sprint` とする
 
 ---
 
