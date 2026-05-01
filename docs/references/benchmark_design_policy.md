@@ -861,6 +861,23 @@ benchmark 設計は、トレーニング効果の見方にも影響する。
 
 この方針により、現行システムを壊さずに benchmark 設計を改善できる。
 
+### 9.6 試作ファイルの初期状態
+
+`data/reference/benchmark_stage_percentile_values.csv` を、まず `10m_sprint` のみで作成した。
+
+初期状態では、以下を満たす。
+
+- 現行 pipeline では使用しない
+- `10m_sprint` のみを対象とする
+- stage は `U12 / U14 / U16 / U18 / 18+`
+- metric は `p50 / p75 / p90 / p95 / elite_reference`
+- 値は全て `TBD`
+- `source_type` は `unknown`
+- `confidence` は `low`
+- `review_status` は `needs_review`
+
+このファイルは、stage × percentile 型 benchmark の構造検証と、今後の 10m_sprint 根拠確認の受け皿として使う。
+
 ---
 
 ## 10. 移行方針

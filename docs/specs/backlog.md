@@ -378,6 +378,24 @@ Status: In Progress
 - 新しい stage × percentile benchmark は、別ファイルで試作する
 - 最初の試作対象は `10m_sprint` とする
 
+試作メモ:
+- `data/reference/benchmark_stage_percentile_values.csv` を作成した
+- まずは `10m_sprint` のみで stage × percentile 型 benchmark を試作した
+- stage は以下
+  - `U12`
+  - `U14`
+  - `U16`
+  - `U18`
+  - `18+`
+- metric は以下
+  - `p50`
+  - `p75`
+  - `p90`
+  - `p95`
+  - `elite_reference`
+- 現時点では値は全て `TBD`
+- 現行 pipeline ではまだ使用しない
+
 ---
 
 ## 3. システム強化
