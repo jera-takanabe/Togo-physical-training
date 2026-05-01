@@ -396,6 +396,18 @@ Status: In Progress
 - 現時点では値は全て `TBD`
 - 現行 pipeline ではまだ使用しない
 
+10m_sprint レビュー メモ:
+- `10m_sprint` はラグビー固有能力ではなく、基礎スプリント能力として扱う
+- benchmark source はラグビー選手データに限定しない
+- 年齢 / stage / percentile / 測定条件が明確な source を優先する
+- サッカー選手データは、一般男子基準ではなく `population = athlete` として扱う
+- 現時点の候補:
+  - Nikolaidis et al. (2016): 男子サッカー選手 9〜35歳、0–10m split の athlete benchmark 候補
+  - Nowak et al. (2025): 男子サッカー選手 12〜16歳、10m sprint percentile の U14 / U16 athlete benchmark 候補
+  - Development of juvenile sprint performance in boys: U12 / U14 / U16 / U18 / U20 の stage 設計・発達傾向の参考候補
+- 現時点では `benchmark_stage_percentile_values.csv` の値は `TBD` のままとする
+- 一般男子基準と athlete 基準を混同しない
+
 ---
 
 ## 3. システム強化

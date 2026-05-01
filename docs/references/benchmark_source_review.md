@@ -111,6 +111,68 @@
 
 現時点では暫定値として扱う。
 
+#### ソース選定方針
+
+`10m_sprint` は、ラグビー固有のスキルではなく、基礎スプリント能力として扱う。
+
+そのため、benchmark source はラグビー選手のデータに限定しない。
+
+優先する source は以下である。
+
+1. 年齢 / stage が明確である
+2. 男子データである
+3. 10m sprint または 0–10m split が含まれる
+4. percentile または年齢別 reference value がある
+5. 測定条件が明記されている
+6. 対象集団が `general` / `athlete` / `elite` のどれに近いか判断できる
+
+サッカー選手データは、基礎スプリント能力の athlete benchmark として利用候補にする。
+
+ただし、一般男子基準ではなく、`population = athlete` として扱う。
+
+#### ソース候補
+
+| candidate | 対象 | 使えそうな用途 | 注意点 | status |
+|---|---|---|---|---|
+| Nikolaidis et al. (2016), male football players aged 9–35 years | 男子サッカー選手 9〜35歳 | 0–10m split の age reference 候補。U12〜18+ の athlete benchmark 候補 | サッカー選手データであり general ではない。percentile として使えるか表確認が必要 | candidate |
+| Nowak et al. / Normative and limit values of speed, endurance and power tests in young football players | 男子サッカー選手 12〜16歳 | 10m sprint の percentile 候補。U14 / U16 の athlete benchmark 候補 | U12 / U18 / 18+ には不足。サッカーアカデミー系の可能性がある | candidate |
+| Development of juvenile sprint performance in boys | 男子 U12 / U14 / U16 / U18 / U20 | stage 区分の参考。U12〜U18 の発達傾向の確認候補 | 10m sprint 値や percentile の詳細確認が必要 | candidate |
+
+#### 現時点の判断
+
+現時点では、`10m_sprint` の benchmark 値はまだ確定しない。
+
+まずは `benchmark_stage_percentile_values.csv` の値を `TBD` のままとし、各 source の対象年齢・測定条件・percentile 定義を確認する。
+
+特に、以下を分けて扱う。
+
+- `population = general`
+- `population = athlete`
+- `population = academy`
+- `population = elite`
+
+`10m_sprint` の最初の試作では、一般男子基準と athlete 基準を混同しない。
+
+#### 候補ソースの暫定評価
+
+現時点では、以下のように扱う。
+
+| candidate | source_type | population | stage coverage | percentile availability | provisional role |
+|---|---|---|---|---|---|
+| Nikolaidis et al. (2016) | primary_source | athlete | U12〜18+ 相当を広く含む | 0–10m split の percentile table あり | `10m_sprint` の athlete benchmark 候補 |
+| Nowak et al. (2025) | primary_source | athlete / academy | 主に U14 / U16 | 10m sprint の percentile table あり | U14 / U16 の athlete benchmark 候補 |
+| Development of juvenile sprint performance in boys | primary_source | general / athlete 要確認 | U12 / U14 / U16 / U18 / U20 | percentile ではなく mean / SD / min / max 中心の可能性 | stage設計・発達傾向の参考候補 |
+
+#### 採用前に確認すること
+
+- 各 source の測定開始条件
+- 測定機器
+- 0–10m split と 10m sprint の定義差
+- 対象者の競技レベル
+- 各 stage に対応する年齢範囲
+- percentile が実測値か、モデル推定値か
+- `population = general` として使えるデータが別途必要か
+
 ---
 
 ### 4.2 20m_sprint
