@@ -12,3 +12,10 @@ session_id,date,athlete,test_type,trial,valid,rest_sec,distance_m,time_sec,surfa
 2026-04_test1,2026-04-21,togo,RSA_20m_20s,4,true,20,20,4.48,河川敷,トレシュー,8.0,3,0,felt good
 2026-04_test1,2026-04-21,togo,RSA_20m_20s,5,true,20,20,4.29,河川敷,トレシュー,8.0,3,0,felt good
 2026-04_test1,2026-04-21,togo,RSA_20m_20s,6,true,20,20,4.40,河川敷,トレシュー,8.0,3,0,felt good
+
+2026-05_test1,2026-05-05,togo,RSA_20m_20s,1,true,20,20,4.40,河川敷,トレシュー,9.0,1,0,felt good
+2026-05_test1,2026-05-05,togo,RSA_20m_20s,2,true,20,20,4.44,河川敷,トレシュー,9.0,1,0,felt good
+2026-05_test1,2026-05-05,togo,RSA_20m_20s,3,true,20,20,4.40,河川敷,トレシュー,9.0,1,0,felt good
+2026-05_test1,2026-05-05,togo,RSA_20m_20s,4,true,20,20,4.51,河川敷,トレシュー,9.0,1,0,felt good
+2026-05_test1,2026-05-05,togo,RSA_20m_20s,5,true,20,20,4.48,河川敷,トレシュー,9.0,1,0,felt good
+2026-05_test1,2026-05-05,togo,RSA_20m_20s,6,true,20,20,4.63,河川敷,トレシュー,9.0,1,0,felt good

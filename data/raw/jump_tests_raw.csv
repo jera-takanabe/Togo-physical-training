@@ -19,3 +19,15 @@ session_id,date,athlete,test_type,trial,valid,device,video_file,fps,jump_height_
 
 2026-04_test1,2026-04-16,togo,DJ,1,true,MyJumpLab,IMG_E0649.MOV,30,15.8,171,359,2.1,コンクリート,トレシュー,8.0,3,0,
 2026-04_test1,2026-04-16,togo,DJ,2,true,MyJumpLab,IMG_E0650.MOV,30,9.9,130,284,2.19,コンクリート,トレシュー,8.0,3,0,
+
+2026-05_test1,2026-05-05,togo,CMJ,1,true,MyJumpLab,,240,25.8,,,,コンクリート,トレシュー,9.0,1,0,
+2026-05_test1,2026-05-05,togo,CMJ,2,true,MyJumpLab,,240,25.3,,,,コンクリート,トレシュー,9.0,1,0,
+2026-05_test1,2026-05-05,togo,CMJ,3,true,MyJumpLab,,240,25.8,,,,コンクリート,トレシュー,9.0,1,0,
+
+2026-05_test1,2026-05-05,togo,SJ,1,true,MyJumpLab,,240,17.3,,,,コンクリート,トレシュー,9.0,1,0,
+2026-05_test1,2026-05-05,togo,SJ,2,true,MyJumpLab,,240,20.1,,,,コンクリート,トレシュー,9.0,1,0,
+2026-05_test1,2026-05-05,togo,SJ,3,true,MyJumpLab,,240,20.1,,,,コンクリート,トレシュー,9.0,1,0,
+
+2026-05_test1,2026-05-05,togo,DJ,1,true,MyJumpLab,,240,12.7,200,321,1.6,コンクリート,トレシュー,9.0,1,0,
+2026-05_test1,2026-05-05,togo,DJ,2,true,MyJumpLab,,240,15.1,196,350,1.79,コンクリート,トレシュー,9.0,1,0,
+2026-05_test1,2026-05-05,togo,DJ,3,true,MyJumpLab,,240,17.7,188,380,2.03,コンクリート,トレシュー,9.0,1,0,

@@ -6,3 +6,7 @@ session_id,date,athlete,test_type,trial,valid,device,video_file,distance_m,surfa
 2026-04_test1,2026-04-16,togo,medicine_ball_throw_2kg,1,true,,,2.68,コンクリート,スニーカー,8.0,3,0,座位
 2026-04_test1,2026-04-16,togo,medicine_ball_throw_2kg,2,true,,,3.00,コンクリート,スニーカー,8.0,3,0,座位
 2026-04_test1,2026-04-16,togo,medicine_ball_throw_2kg,3,true,,,2.80,コンクリート,スニーカー,8.0,3,0,座位
+
+2026-05_test1,2026-05-05,togo,medicine_ball_throw_2kg,1,true,,,2.60,コンクリート,スニーカー,9.0,1,0,座位
+2026-05_test1,2026-05-05,togo,medicine_ball_throw_2kg,2,true,,,3.20,コンクリート,スニーカー,9.0,1,0,座位
+2026-05_test1,2026-05-05,togo,medicine_ball_throw_2kg,3,true,,,2.97,コンクリート,スニーカー,9.0,1,0,座位

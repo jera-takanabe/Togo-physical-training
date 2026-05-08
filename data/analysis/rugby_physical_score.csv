@@ -1,3 +1,4 @@
 athlete,session_id,rugby_physical_score,score_band,strongest_domain,weakest_domain,priority_1,priority_2
 togo,2026-03_test1,69.97,Developing,acceleration,upper_body_power,upper_body_power,endurance
 togo,2026-04_test1,53.31,Foundation,reactive_strength,acceleration,acceleration,explosive_power
+togo,2026-05_test1,54.83,Foundation,reactive_strength,acceleration,acceleration,upper_body_power
