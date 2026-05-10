@@ -408,6 +408,45 @@ Status: In Progress
 - 現時点では `benchmark_stage_percentile_values.csv` の値は `TBD` のままとする
 - 一般男子基準と athlete 基準を混同しない
 
+Nowak et al. (2025) レビュー メモ:
+- `Nowak et al. (2025)` を 10m_sprint の U14 / U16 academy benchmark 候補として詳細レビューした
+- 対象は 12〜16歳の男子サッカーアカデミー選手495名
+- 5m / 10m / 30m sprint、standing long jump、30–15 IFT を測定している
+- 10m sprint について P3 / P10 / P25 / P50 / P75 / P90 / P97 の percentile table がある
+- `P50 / P75 / P90` は利用候補にできる
+- `p95` は直接提供されていないため、P97を参考値として扱うか、p95を空欄にするか後で決める
+- 対象は一般男子ではなくサッカーアカデミー選手のため、`population = academy` または `population = athlete` として扱う
+- 暫定判断:
+  - `source_type`: `primary_source`
+  - `population`: `academy`
+  - `confidence`: `medium`
+  - `review_status`: `provisional`
+- CSV反映前の検討として、`benchmark_stage_percentile_values.csv` へ `age` / `source_id` 列を追加した
+
+CSV構造更新メモ:
+- `data/reference/benchmark_stage_percentile_values.csv` に `age` 列を追加した
+- `data/reference/benchmark_stage_percentile_values.csv` に `source_id` 列を追加した
+- 理由:
+  - `stage` だけでは 13歳値 / 14歳値などの区別ができない
+  - 複数sourceを扱うため、値の由来を追跡できる必要がある
+- 現在の列数は17列
+
+Nowak et al. (2025) CSV試験投入メモ:
+- `data/reference/benchmark_stage_percentile_values.csv` に、Nowak et al. (2025) 由来の `10m_sprint` academy benchmark 行を追加した
+- 追加した対象:
+  - U14 / age 13 / p50, p75, p90
+  - U14 / age 14 / p50, p75, p90
+  - U16 / age 15 / p50, p75, p90
+  - U16 / age 16 / p50, p75, p90
+- `population = academy`
+- `source_id = nowak_2025`
+- `source_type = primary_source`
+- `confidence = medium`
+- `review_status = provisional`
+- `p95` は Nowak et al. (2025) に直接値がないため、現時点では追加しない
+- age 12 は U12 / U13 境界の扱いが曖昧なため、現時点では追加しない
+- 現行 pipeline ではまだ使用しない
+
 ---
 
 ## 3. システム強化

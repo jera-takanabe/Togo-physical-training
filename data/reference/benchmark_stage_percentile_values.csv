@@ -1,26 +1,38 @@
-test,unit,stage,sex,population,metric_type,metric,value,direction,source_type,confidence,review_status,measurement_protocol,source_note,review_note
-10m_sprint,s,U12,male,general,percentile,p50,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U12,male,general,percentile,p75,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U12,male,general,percentile,p90,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U12,male,general,percentile,p95,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U12,male,elite,reference,elite_reference,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U14,male,general,percentile,p50,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U14,male,general,percentile,p75,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U14,male,general,percentile,p90,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U14,male,general,percentile,p95,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U14,male,elite,reference,elite_reference,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U16,male,general,percentile,p50,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U16,male,general,percentile,p75,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U16,male,general,percentile,p90,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U16,male,general,percentile,p95,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U16,male,elite,reference,elite_reference,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U18,male,general,percentile,p50,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U18,male,general,percentile,p75,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U18,male,general,percentile,p90,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U18,male,general,percentile,p95,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,U18,male,elite,reference,elite_reference,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,18+,male,general,percentile,p50,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,18+,male,general,percentile,p75,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,18+,male,general,percentile,p90,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,18+,male,general,percentile,p95,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
-10m_sprint,s,18+,male,elite,reference,elite_reference,TBD,lower,unknown,low,needs_review,TBD,TBD,TBD
+test,unit,stage,age,sex,population,metric_type,metric,value,direction,source_id,source_type,confidence,review_status,measurement_protocol,source_note,review_note
+10m_sprint,s,U12,TBD,male,general,percentile,p50,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U12,TBD,male,general,percentile,p75,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U12,TBD,male,general,percentile,p90,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U12,TBD,male,general,percentile,p95,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U12,TBD,male,elite,reference,elite_reference,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U14,TBD,male,general,percentile,p50,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U14,TBD,male,general,percentile,p75,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U14,TBD,male,general,percentile,p90,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U14,TBD,male,general,percentile,p95,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U14,TBD,male,elite,reference,elite_reference,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U16,TBD,male,general,percentile,p50,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U16,TBD,male,general,percentile,p75,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U16,TBD,male,general,percentile,p90,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U16,TBD,male,general,percentile,p95,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U16,TBD,male,elite,reference,elite_reference,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U18,TBD,male,general,percentile,p50,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U18,TBD,male,general,percentile,p75,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U18,TBD,male,general,percentile,p90,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U18,TBD,male,general,percentile,p95,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U18,TBD,male,elite,reference,elite_reference,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,18+,TBD,male,general,percentile,p50,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,18+,TBD,male,general,percentile,p75,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,18+,TBD,male,general,percentile,p90,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,18+,TBD,male,general,percentile,p95,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,18+,TBD,male,elite,reference,elite_reference,TBD,lower,TBD,unknown,low,needs_review,TBD,TBD,TBD
+10m_sprint,s,U14,13,male,academy,percentile,p50,1.935,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 13 P50
+10m_sprint,s,U14,13,male,academy,percentile,p75,1.869,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 13 P75
+10m_sprint,s,U14,13,male,academy,percentile,p90,1.812,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 13 P90
+10m_sprint,s,U14,14,male,academy,percentile,p50,1.842,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 14 P50
+10m_sprint,s,U14,14,male,academy,percentile,p75,1.788,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 14 P75
+10m_sprint,s,U14,14,male,academy,percentile,p90,1.746,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 14 P90
+10m_sprint,s,U16,15,male,academy,percentile,p50,1.803,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 15 P50
+10m_sprint,s,U16,15,male,academy,percentile,p75,1.764,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 15 P75
+10m_sprint,s,U16,15,male,academy,percentile,p90,1.719,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 15 P90
+10m_sprint,s,U16,16,male,academy,percentile,p50,1.788,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 16 P50
+10m_sprint,s,U16,16,male,academy,percentile,p75,1.729,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 16 P75
+10m_sprint,s,U16,16,male,academy,percentile,p90,1.690,lower,nowak_2025,primary_source,medium,provisional,10m sprint; youth football academy; details in benchmark_source_review.md,Nowak et al. 2025,age 16 P90

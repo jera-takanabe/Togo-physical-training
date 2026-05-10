@@ -173,6 +173,42 @@
 - percentile が実測値か、モデル推定値か
 - `population = general` として使えるデータが別途必要か
 
+#### Nowak et al. (2025) 詳細レビュー
+
+Nowak et al. (2025) は、12〜16歳の男子サッカーアカデミー選手495名を対象に、5m / 10m / 30m sprint、standing long jump、30–15 IFT を測定し、P3 / P10 / P25 / P50 / P75 / P90 / P97 の percentile table を作成している。
+
+対象者は RKS Raków Częstochowa Academy の選手であり、競技レベルは Tier 3、トレーニング経験は4〜8年、各シーズンで最高レベルのジュニアリーグに出場していた。
+
+10m sprint の percentile table は以下である。
+
+| age | P3 | P10 | P25 | P50 | P75 | P90 | P97 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 12 | 2.149 | 2.102 | 2.059 | 1.984 | 1.928 | 1.873 | 1.813 |
+| 13 | 2.192 | 2.115 | 2.009 | 1.935 | 1.869 | 1.812 | 1.769 |
+| 14 | 2.028 | 1.967 | 1.900 | 1.842 | 1.788 | 1.746 | 1.725 |
+| 15 | 1.964 | 1.937 | 1.864 | 1.803 | 1.764 | 1.719 | 1.688 |
+| 16 | 1.965 | 1.904 | 1.844 | 1.788 | 1.729 | 1.690 | 1.651 |
+
+注意:
+- タイム系なので、値が小さいほど高い percentile として扱われている
+- P50 / P75 / P90 はそのまま利用候補にできる
+- p95 は直接提供されていないため、P97を参考値として扱うか、p95を空欄にする
+- 対象はサッカーアカデミー選手であり、一般男子基準ではない
+- `population = academy` または `population = athlete` として扱う
+- U12 / U18 / 18+ は直接カバーしない
+
+暫定判断:
+- source_type: `primary_source`
+- population: `academy`
+- confidence: `medium`
+- review_status: `provisional`
+- provisional_role: `U14 / U16 の 10m_sprint academy benchmark 候補`
+
+CSV反映前の追加検討:
+- `benchmark_stage_percentile_values.csv` に `age` 列を追加する
+- `source_id` 列を追加する
+- `p95` を空欄にするか、P97参考として扱うか決める
+
 ---
 
 ### 4.2 20m_sprint

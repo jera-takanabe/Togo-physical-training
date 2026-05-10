@@ -773,12 +773,14 @@ benchmark 設計は、トレーニング効果の見方にも影響する。
 | `test` | 測定項目 |
 | `unit` | 単位 |
 | `stage` | U12 / U14 / U16 / U18 / 18+ |
+| `age` | 実年齢または年齢グループ |
 | `sex` | male / female / mixed / unknown |
 | `population` | general / athlete / academy / elite / professional |
 | `metric_type` | percentile / reference / estimate |
 | `metric` | p50 / p75 / p90 / p95 / elite_reference |
 | `value` | benchmark 値 |
 | `direction` | higher / lower |
+| `source_id` | 出典識別子 |
 | `source_type` | primary_source / secondary_source / synthesized_estimate / project_placeholder |
 | `confidence` | high / medium / low |
 | `review_status` | reviewed / needs_review / provisional / replace_candidate |
@@ -861,6 +863,8 @@ benchmark 設計は、トレーニング効果の見方にも影響する。
 
 この方針により、現行システムを壊さずに benchmark 設計を改善できる。
 
+---
+
 ### 9.6 試作ファイルの初期状態
 
 `data/reference/benchmark_stage_percentile_values.csv` を、まず `10m_sprint` のみで作成した。
@@ -877,6 +881,36 @@ benchmark 設計は、トレーニング効果の見方にも影響する。
 - `review_status` は `needs_review`
 
 このファイルは、stage × percentile 型 benchmark の構造検証と、今後の 10m_sprint 根拠確認の受け皿として使う。
+
+---
+
+### 9.7 Nowak et al. (2025) の試験投入
+
+`data/reference/benchmark_stage_percentile_values.csv` に、Nowak et al. (2025) 由来の `10m_sprint` academy benchmark を試験投入した。
+
+投入した範囲は以下である。
+
+| stage | age | population | metric |
+|---|---:|---|---|
+| U14 | 13 | academy | p50 / p75 / p90 |
+| U14 | 14 | academy | p50 / p75 / p90 |
+| U16 | 15 | academy | p50 / p75 / p90 |
+| U16 | 16 | academy | p50 / p75 / p90 |
+
+この値は、現時点では以下として扱う。
+
+- `source_id`: `nowak_2025`
+- `source_type`: `primary_source`
+- `confidence`: `medium`
+- `review_status`: `provisional`
+
+注意点:
+
+- 対象は一般男子ではなく、男子サッカーアカデミー選手である
+- そのため `population = academy` として扱う
+- `p95` は直接提供されていないため、現時点では追加しない
+- age 12 は U12 / U13 境界の扱いが曖昧なため、現時点では追加しない
+- 現行 pipeline ではまだ使用しない
 
 ---
 
